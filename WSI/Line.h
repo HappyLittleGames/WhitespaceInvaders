@@ -1,13 +1,12 @@
 #pragma once
-#include "SFML\Graphics.hpp"
-class Line
+#include "DrawableObject.h"
+
+class Line : DrawableObject 
 {
 public:
 
 	Line();
 	~Line();
-
-	void Update(sf::RenderWindow&, float deltaTime);
 
 	sf::Text GetText() const;
 	void SetText(sf::Text text);
