@@ -13,6 +13,5 @@ public:
 
 protected:
 	sf::Text m_text;
-
 };
 

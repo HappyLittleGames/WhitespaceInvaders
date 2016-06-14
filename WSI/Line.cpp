@@ -20,3 +20,4 @@ void Line::SetText(sf::Text text)
 {
 	m_text = text;
 }
+
