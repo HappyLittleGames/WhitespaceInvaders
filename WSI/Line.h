@@ -4,9 +4,16 @@ class Line
 {
 public:
 
-	void Update(sf::RenderWindow&, float deltaTime);
-
 	Line();
 	~Line();
+
+	void Update(sf::RenderWindow&, float deltaTime);
+
+	sf::Text GetText() const;
+	void SetText(sf::Text text);
+
+protected:
+	sf::Text m_text;
+
 };
 
