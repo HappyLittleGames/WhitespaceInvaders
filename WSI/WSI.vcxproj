@@ -154,13 +154,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AssetLoader.cpp" />
     <ClCompile Include="DrawableObject.cpp" />
+    <ClCompile Include="Header.cpp" />
+    <ClCompile Include="Invader.cpp" />
     <ClCompile Include="Line.cpp" />
+    <ClCompile Include="LineWriter.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ObjectHandler.cpp" />
+    <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AssetLoader.h" />
     <ClInclude Include="DrawableObject.h" />
+    <ClInclude Include="Header.h" />
+    <ClInclude Include="Invader.h" />
     <ClInclude Include="Line.h" />
+    <ClInclude Include="LineWriter.h" />
+    <ClInclude Include="ObjectHandler.h" />
+    <ClInclude Include="Player.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

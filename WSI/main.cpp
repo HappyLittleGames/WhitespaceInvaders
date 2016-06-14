@@ -1,13 +1,19 @@
 #include <SFML/Graphics.hpp>
+#include "ObjectHandler.h"
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-	sf::CircleShape shape(100.f);
-	shape.setFillColor(sf::Color::Green);
+	sf::VideoMode windowMode = sf::VideoMode(256, 512);
+
+	sf::RenderWindow window(windowMode, "whitespace", sf::Style::None);
+	window.setVerticalSyncEnabled(true);
+	window.setFramerateLimit(60);
+
+	ObjectHandler* objectHandler = new ObjectHandler();
 
 	while (window.isOpen())
 	{
+
 		sf::Event event;
 		while (window.pollEvent(event))
 		{
@@ -16,7 +22,10 @@ int main()
 		}
 
 		window.clear();
-		window.draw(shape);
+
+		objectHandler->UpdateEverything(window);
+		objectHandler->DrawEverything(window);
+
 		window.display();
 	}
 

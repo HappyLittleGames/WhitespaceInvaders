@@ -15,10 +15,11 @@ public:
 
 	bool GetFollowState() const;
 	void SetFollowState(bool state);
+
 protected:
 	sf::Vector2f m_speed;
 
-	void FollowWindow(sf::RenderWindow& window);
+	virtual void FollowWindow(sf::RenderWindow& window) = 0;
 	bool m_followingWindow;
 
 };
