@@ -44,6 +44,14 @@ int main()
 				{
 					objectHandler->GetPlayer()->EnterText(event);
 				}
+				case (sf::Event::KeyPressed) :
+				{
+					if ((event.key.code == sf::Keyboard::BackSpace) || (event.key.code == sf::Keyboard::Return))
+					{
+						objectHandler->GetPlayer()->EnterText(event);
+					}
+					break;
+				}
 			}
 		}
 

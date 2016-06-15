@@ -1,5 +1,7 @@
 #pragma once
 #include "Line.h"
+#include <iostream>
+
 class Player : public Line
 {
 public:
@@ -14,7 +16,7 @@ public:
 	void SetCommand(sf::Text text);
 	sf::Text GetCommand() const;
 
-	void EnterText(sf::Event event);
+	void EnterText(sf::Event& event);
 
 private:
 	sf::Text m_command;

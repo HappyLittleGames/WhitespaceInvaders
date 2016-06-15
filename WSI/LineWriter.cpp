@@ -42,3 +42,19 @@ Player* LineWriter::NewPlayer(sf::RenderWindow& window, sf::Font& font)
 	return player;
 }
 
+
+Lazer* LineWriter::NewLazer(sf::RenderWindow& window, sf::Font& font, const sf::Text& text)
+{
+	Lazer* lazer = new Lazer();
+	sf::Text lazerText = sf::Text();
+
+	lazerText.setCharacterSize(18);
+	lazerText.setPosition((window.getSize().x / 2 - (lazerText.getCharacterSize() / 2)), window.getSize().y - 16);
+	lazerText.setColor(sf::Color::White);
+	lazerText.setRotation(-90);
+	lazerText.setFont(font);
+
+	lazer->SetFollowState(false);
+	return lazer;
+}
+

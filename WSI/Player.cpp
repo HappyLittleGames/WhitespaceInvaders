@@ -55,11 +55,11 @@ sf::Text Player::GetCommand() const
 	return m_command;
 }
 
-void Player::EnterText(sf::Event event)
+void Player::EnterText(sf::Event& event)
 {
 	if (event.key.code == sf::Keyboard::Return)
 	{
-		// run
+		// run the thing
 	}
 	else if (event.key.code == sf::Keyboard::F1)
 	{
@@ -67,11 +67,14 @@ void Player::EnterText(sf::Event event)
 	}
 	else if (event.key.code == sf::Keyboard::BackSpace)
 	{
-		sf::String tempString = m_command.getString();
-		if (tempString.getSize() > 0)
+		std::cout << "attempting to erase" << std::endl;
+
+		if (m_command.getString().getSize() > 0)
 		{
-			tempString.erase(tempString.getSize() - 1);
-			m_command.setString(tempString);
+			std::string string = m_command.getString();
+			string.erase(m_command.getString().getSize() - 1);
+			m_command.setString(string);
+
 		}
 	}
 	else if ((event.key.code == sf::Keyboard::Up) || (event.key.code == sf::Keyboard::Down))
@@ -80,7 +83,8 @@ void Player::EnterText(sf::Event event)
 	}
 	else if (((event.text.unicode >= 65) && (event.text.unicode <= 240)) || event.text.unicode == 59 || event.text.unicode == 40 || event.text.unicode == 41)
 	{
-		char myChar = event.key.code;
-		m_command.setString(m_command.getString() + myChar);
+		char character = event.key.code;
+		std::cout << "entered " << character << "." << std::endl;
+		m_command.setString(m_command.getString() + character);
 	}
 }

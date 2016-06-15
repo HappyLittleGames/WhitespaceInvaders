@@ -8,6 +8,7 @@ public:
 	~Header();
 
 	void Draw(sf::RenderWindow& window);
+
 private:
 	sf::RectangleShape m_area;
 	sf::Text* m_title;
