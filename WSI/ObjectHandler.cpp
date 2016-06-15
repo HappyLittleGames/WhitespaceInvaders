@@ -16,6 +16,11 @@ Player * ObjectHandler::GetPlayer() const
 	return m_player;
 }
 
+std::vector<Lazer*> ObjectHandler::GetLazers()
+{
+	return m_lazers;
+}
+
 
 ObjectHandler::ObjectHandler()
 {
@@ -36,6 +41,11 @@ void ObjectHandler::DrawEverything(sf::RenderWindow& window)
 {
 	m_player->Draw(window);
 	m_header->Draw(window);
+
+	for each (Lazer* lazer in m_lazers)
+	{
+		lazer->Draw(window);
+	}
 }
 
 

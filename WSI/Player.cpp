@@ -59,7 +59,8 @@ void Player::EnterText(sf::Event& event)
 {
 	if (event.key.code == sf::Keyboard::Return)
 	{
-		// run the thing
+
+		m_command.setString("");
 	}
 	else if (event.key.code == sf::Keyboard::F1)
 	{

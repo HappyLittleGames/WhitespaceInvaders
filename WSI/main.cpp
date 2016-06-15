@@ -46,7 +46,12 @@ int main()
 				}
 				case (sf::Event::KeyPressed) :
 				{
-					if ((event.key.code == sf::Keyboard::BackSpace) || (event.key.code == sf::Keyboard::Return))
+					if (event.key.code == sf::Keyboard::Return)
+					{
+						objectHandler->GetLazers().push_back(LineWriter::NewLazer(window, objectHandler->GetPlayer()->GetCommand()));
+						objectHandler->GetPlayer()->EnterText(event);
+					}
+					else if (event.key.code == sf::Keyboard::BackSpace)
 					{
 						objectHandler->GetPlayer()->EnterText(event);
 					}

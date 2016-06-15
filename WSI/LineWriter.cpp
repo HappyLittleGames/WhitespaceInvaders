@@ -43,18 +43,19 @@ Player* LineWriter::NewPlayer(sf::RenderWindow& window, sf::Font& font)
 }
 
 
-Lazer* LineWriter::NewLazer(sf::RenderWindow& window, sf::Font& font, const sf::Text& text)
+Lazer* LineWriter::NewLazer(sf::RenderWindow& window, const sf::Text& copyText)
 {
 	Lazer* lazer = new Lazer();
 	sf::Text lazerText = sf::Text();
 
-	lazerText.setCharacterSize(18);
-	lazerText.setPosition((window.getSize().x / 2 - (lazerText.getCharacterSize() / 2)), window.getSize().y - 16);
-	lazerText.setColor(sf::Color::White);
-	lazerText.setRotation(-90);
-	lazerText.setFont(font);
+	lazerText.setCharacterSize(copyText.getCharacterSize());
+	lazerText.setPosition(copyText.getPosition());
+	lazerText.setColor(copyText.getColor());
+	lazerText.setRotation(copyText.getRotation());
+	lazerText.setFont(*copyText.getFont());
 
 	lazer->SetFollowState(false);
+	lazer->SetText(lazerText);
 	return lazer;
 }
 

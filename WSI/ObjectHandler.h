@@ -9,6 +9,7 @@ public:
 	static ObjectHandler* GetInstance();
 
 	Player* GetPlayer() const;
+	std::vector<Lazer*> GetLazers();
 
 	void UpdateEverything(sf::RenderWindow& window);
 	void DrawEverything(sf::RenderWindow& window);
@@ -22,5 +23,6 @@ private:
 	AssetLoader* m_loader;
 	Player* m_player;
 	std::vector<Invader*> m_invaders;
+	std::vector<Lazer*> m_lazers;
 };
 

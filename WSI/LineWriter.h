@@ -11,6 +11,6 @@ public:
 
 	static Player* NewPlayer(sf::RenderWindow& window, sf::Font& font);
 
-	static Lazer* NewLazer(sf::RenderWindow& window, sf::Font& font, const sf::Text& text);
+	static Lazer* NewLazer(sf::RenderWindow& window, const sf::Text& copyText);
 };
 
