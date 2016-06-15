@@ -1,7 +1,7 @@
 #pragma once
 #include "DrawableObject.h"
 
-class Line : DrawableObject
+class Line : public DrawableObject
 {
 public:
 

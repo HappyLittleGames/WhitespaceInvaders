@@ -5,7 +5,7 @@
 Header::Header(sf::Font& font)
 {
 	m_title = new sf::Text();
-	m_title->setString("CMD");
+	m_title->setString("Command Prompt");
 	m_title->setCharacterSize(18);
 	m_title->setFont(font);
 	m_title->setColor(sf::Color::Black);
@@ -23,10 +23,10 @@ Header::~Header()
 }
 
 
-void Header::Draw(sf::RenderWindow& window, float deltaTime)
+void Header::Draw(sf::RenderWindow& window)
 {
-	m_title->setPosition(sf::Vector2f(0, 0));
-	m_buttons->setPosition(sf::Vector2f(window.getSize().x - 32, 0));
+	m_title->setPosition(sf::Vector2f(4, 4));
+	m_buttons->setPosition(sf::Vector2f(window.getSize().x - 24, 4));
 
 	m_area.setSize(sf::Vector2f(window.getSize().x, 32));
 	m_area.setFillColor(sf::Color::White);

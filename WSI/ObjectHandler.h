@@ -6,14 +6,21 @@
 class ObjectHandler
 {
 public:
-	ObjectHandler();
-	~ObjectHandler();
+	static ObjectHandler* GetInstance();
+
+	Player* GetPlayer() const;
 
 	void UpdateEverything(sf::RenderWindow& window);
 	void DrawEverything(sf::RenderWindow& window);
 
+	void NewGame(sf::RenderWindow& window);
 private:
+	ObjectHandler();
+	static ObjectHandler* m_instance;
+
 	Header* m_header;
 	AssetLoader* m_loader;
+	Player* m_player;
+	std::vector<Invader*> m_invaders;
 };
 

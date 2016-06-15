@@ -20,6 +20,7 @@ protected:
 	sf::Vector2f m_speed;
 
 	virtual void FollowWindow(sf::RenderWindow& window) = 0;
+
 	bool m_followingWindow;
 
 };
