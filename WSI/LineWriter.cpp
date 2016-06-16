@@ -45,6 +45,8 @@ Player* LineWriter::NewPlayer(sf::RenderWindow& window, sf::Font& font)
 
 Lazer* LineWriter::NewLazer(sf::RenderWindow& window, const sf::Text& copyText)
 {
+	std::cout << "Making Lazer pew pew pew" << std::endl;
+
 	Lazer* lazer = new Lazer();
 	sf::Text lazerText = sf::Text();
 
@@ -54,6 +56,7 @@ Lazer* LineWriter::NewLazer(sf::RenderWindow& window, const sf::Text& copyText)
 	lazerText.setRotation(copyText.getRotation());
 	lazerText.setFont(*copyText.getFont());
 
+	lazerText.setString(copyText.getString());
 	lazer->SetFollowState(false);
 	lazer->SetText(lazerText);
 	return lazer;

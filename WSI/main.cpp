@@ -50,6 +50,7 @@ int main()
 					{
 						objectHandler->GetLazers().push_back(LineWriter::NewLazer(window, objectHandler->GetPlayer()->GetCommand()));
 						objectHandler->GetPlayer()->EnterText(event);
+						std::cout << "size of lazers: " << objectHandler->GetLazers().size() << "." << std::endl;
 					}
 					else if (event.key.code == sf::Keyboard::BackSpace)
 					{

@@ -2,8 +2,9 @@
 #include "Player.h"
 #include "Invader.h"
 #include "Lazer.h"
+#include <iostream>
 
-static class LineWriter
+class LineWriter
 {
 public:
 	LineWriter();

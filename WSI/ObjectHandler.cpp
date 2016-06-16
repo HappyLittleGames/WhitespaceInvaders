@@ -16,9 +16,10 @@ Player * ObjectHandler::GetPlayer() const
 	return m_player;
 }
 
-std::vector<Lazer*> ObjectHandler::GetLazers()
+std::vector<Lazer*> & ObjectHandler::GetLazers()
 {
-	return m_lazers;
+	std::vector<Lazer*> & lazerRef = m_lazers;
+	return lazerRef;
 }
 
 
@@ -34,6 +35,11 @@ void ObjectHandler::UpdateEverything(sf::RenderWindow& window)
 	float deltaTime = 1; // DON'T MAKE THIS HERE THO LOL
 	
 	m_player->Update(window, deltaTime);
+
+	for (int i = 0; i < m_lazers.size(); i++)
+	{
+		m_lazers[i]->Update(window, deltaTime);
+	}
 }
 
 
@@ -42,9 +48,9 @@ void ObjectHandler::DrawEverything(sf::RenderWindow& window)
 	m_player->Draw(window);
 	m_header->Draw(window);
 
-	for each (Lazer* lazer in m_lazers)
+	for (int i = 0; i < m_lazers.size(); i++)
 	{
-		lazer->Draw(window);
+		m_lazers[i]->Draw(window);
 	}
 }
 

@@ -9,7 +9,7 @@ public:
 	static ObjectHandler* GetInstance();
 
 	Player* GetPlayer() const;
-	std::vector<Lazer*> GetLazers();
+	std::vector<Lazer*> & GetLazers();
 
 	void UpdateEverything(sf::RenderWindow& window);
 	void DrawEverything(sf::RenderWindow& window);
