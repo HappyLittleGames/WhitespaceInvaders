@@ -10,8 +10,10 @@ public:
 	LineWriter();
 	~LineWriter();
 
-	static Player* NewPlayer(sf::RenderWindow& window, sf::Font& font);
+	static Player* NewPlayer(const sf::RenderWindow& window, sf::Font& font);
 
-	static Lazer* NewLazer(sf::RenderWindow& window, const sf::Text& copyText);
+	static Lazer* NewLazer(const sf::RenderWindow& window, const sf::Text& copyText);
+
+	static Invader* NewInvader(const sf::RenderWindow& window, sf::Font& font, sf::Vector2f spawnPos);
 };
 

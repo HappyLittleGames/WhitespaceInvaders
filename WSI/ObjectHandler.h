@@ -9,7 +9,12 @@ public:
 	static ObjectHandler* GetInstance();
 
 	Player* GetPlayer() const;
-	std::vector<Lazer*> & GetLazers();
+
+	std::vector<Lazer*> GetLazers() const;
+	void AddLazer(Lazer* lazer);
+
+	std::vector<Invader*> GetInvaders() const;
+	void AddInvader(sf::RenderWindow& window, sf::Vector2f spawnPos);
 
 	Header* GetHeader();
 
@@ -17,6 +22,8 @@ public:
 	void DrawEverything(sf::RenderWindow& window);
 
 	void NewGame(sf::RenderWindow& window);
+
+	AssetLoader* GetLoader();
 private:
 	ObjectHandler();
 	static ObjectHandler* m_instance;

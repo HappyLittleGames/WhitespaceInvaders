@@ -19,7 +19,7 @@ void Player::FollowWindow(sf::RenderWindow & window)
 	{
 		sf::Vector2f posDif = m_oldWindowPos - windowPos;
 
-		m_text.setPosition(m_text.getPosition() + posDif);
+		m_text->setPosition(m_text->getPosition() + posDif);
 
 		m_oldWindowPos = windowPos;
 	}
@@ -39,7 +39,7 @@ void Player::Update(sf::RenderWindow& window, float deltaTime)
 
 void Player::Draw(sf::RenderWindow & window)
 {
-	window.draw(m_text);
+	window.draw(*m_text);
 	window.draw(m_command);
 }
 

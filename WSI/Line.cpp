@@ -11,13 +11,13 @@ Line::~Line()
 }
 
 
-sf::Text Line::GetText() const
+sf::Text* Line::GetText() const
 {
 	return m_text;
 }
 
 
-void Line::SetText(sf::Text text)
+void Line::SetText(sf::Text* text)
 {
 	m_text = text;
 }
@@ -30,7 +30,7 @@ void Line::FollowWindow(sf::RenderWindow & window)
 	{
 		sf::Vector2f posDif = m_oldWindowPos - windowPos;
 
-		m_text.setPosition(m_text.getPosition() + posDif);
+		m_text->setPosition(m_text->getPosition() + posDif);
 
 		m_oldWindowPos = windowPos;
 	}

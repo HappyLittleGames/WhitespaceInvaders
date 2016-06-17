@@ -19,5 +19,6 @@ sf::Font& AssetLoader::GetFont()
 	{
 		std::cout << "Failed to load font 'lucon.tff'" << std::endl;
 	}
-	return m_font;
+	sf::Font& fontRef = m_font;
+	return fontRef;
 }

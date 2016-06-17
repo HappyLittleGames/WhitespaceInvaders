@@ -16,11 +16,30 @@ Player * ObjectHandler::GetPlayer() const
 	return m_player;
 }
 
-std::vector<Lazer*> & ObjectHandler::GetLazers()
+
+std::vector<Lazer*> ObjectHandler::GetLazers() const
 {
-	std::vector<Lazer*> & lazerRef = m_lazers;
-	return lazerRef;
+	return m_lazers;
 }
+
+
+void ObjectHandler::AddLazer(Lazer* lazer)
+{
+	m_lazers.push_back(lazer);
+}
+
+
+std::vector<Invader*> ObjectHandler::GetInvaders() const
+{
+	return m_invaders;
+}
+
+
+void ObjectHandler::AddInvader(sf::RenderWindow& window, sf::Vector2f spawnPos)
+{
+	m_invaders.push_back(LineWriter::NewInvader(window, m_loader->GetFont(), spawnPos));
+}
+
 
 Header * ObjectHandler::GetHeader()
 {
@@ -46,6 +65,10 @@ void ObjectHandler::UpdateEverything(sf::RenderWindow& window)
 	{
 		m_lazers[i]->Update(window, deltaTime);
 	}
+	for (int i = 0; i < m_invaders.size(); i++)
+	{
+		m_invaders[i]->Update(window, deltaTime);
+	}
 }
 
 
@@ -58,10 +81,19 @@ void ObjectHandler::DrawEverything(sf::RenderWindow& window)
 	{
 		m_lazers[i]->Draw(window);
 	}
+	for (int i = 0; i < m_invaders.size(); i++)
+	{
+		//m_invaders[i]->Draw(window);
+	}
 }
 
 
 void ObjectHandler::NewGame(sf::RenderWindow& window)
 {
 	m_player = LineWriter::NewPlayer(window, m_loader->GetFont());
+}
+
+AssetLoader* ObjectHandler::GetLoader()
+{
+	return m_loader;
 }
