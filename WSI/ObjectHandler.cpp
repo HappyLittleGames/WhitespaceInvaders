@@ -44,7 +44,7 @@ void ObjectHandler::UpdateEverything(sf::RenderWindow& window)
 	
 	for (int i = 0; i < m_lazers.size(); i++)
 	{
-		//m_lazers[i]->Update(window, deltaTime);
+		m_lazers[i]->Update(window, deltaTime);
 	}
 }
 

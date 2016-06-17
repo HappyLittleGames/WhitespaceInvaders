@@ -1,7 +1,6 @@
 #include "Line.h"
 
 
-
 Line::Line()
 {
 }
@@ -38,7 +37,7 @@ void Line::FollowWindow(sf::RenderWindow & window)
 	else
 	{
 		m_oldWindowPos = windowPos;
-		// m_followingWindow = false; ??
+		m_followingWindow = false;
 	}
 }
 
