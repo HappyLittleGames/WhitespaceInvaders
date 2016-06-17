@@ -23,16 +23,19 @@ int main()
 		{
 			switch (event.type)
 			{
-				case(sf::Event::MouseMoved) :
+				case(sf::Event::MouseButtonPressed):
 				{
-					if ((sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) && (sf::Mouse::getPosition(window).y <= 32)) // header->areaSize ofc
+					if (sf::Mouse::getPosition(window).y <= 30)
 					{
-						window.setPosition(window.getPosition() + sf::Vector2i(event.mouseMove.x, event.mouseMove.y) - mousePos);
+						std::cout << "mouse clicked in header" << std::endl;
+						objectHandler->GetHeader()->SetDragState(true);
 					}
-					else
-					{
-						mousePos = sf::Mouse::getPosition(window);
-					}
+					break;
+				}
+				case (sf::Event::MouseButtonReleased) :
+				{
+					std::cout << "mouse released in anywhere really" << std::endl;
+					objectHandler->GetHeader()->SetDragState(false);
 					break;
 				}
 				case(sf::Event::Closed) :

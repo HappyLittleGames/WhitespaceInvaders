@@ -15,11 +15,35 @@ Header::Header(sf::Font& font)
 	m_buttons->setCharacterSize(18);
 	m_buttons->setFont(font);
 	m_buttons->setColor(sf::Color::Black);
+
+	m_isDragging = false;
+}
+
+
+void Header::SetDragState(bool state)
+{
+	m_isDragging = state;
 }
 
 
 Header::~Header()
 {
+}
+
+
+void Header::Update(sf::RenderWindow& window, float deltaTime)
+{
+	if (m_isDragging)
+	{
+		
+		m_mouseChange = sf::Mouse::getPosition() - m_mousePos;
+		window.setPosition(window.getPosition() + sf::Mouse::getPosition() - m_mouseChange - m_clickedPos);
+	}
+	else
+	{
+		m_clickedPos = sf::Mouse::getPosition() - window.getPosition();
+	}
+	m_mousePos = sf::Mouse::getPosition(window);
 }
 
 
@@ -31,7 +55,6 @@ void Header::Draw(sf::RenderWindow& window)
 	m_area.setSize(sf::Vector2f(window.getSize().x, 32));
 	m_area.setFillColor(sf::Color::White);
 	m_area.setPosition(sf::Vector2f(0, 0));
-	
 
 	window.draw(m_area);
 	window.draw(*m_title);

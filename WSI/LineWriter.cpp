@@ -55,9 +55,9 @@ Lazer* LineWriter::NewLazer(sf::RenderWindow& window, const sf::Text& copyText)
 	lazerText.setColor(copyText.getColor());
 	lazerText.setRotation(copyText.getRotation());
 	lazerText.setFont(*copyText.getFont());
-
 	lazerText.setString(copyText.getString());
-	lazer->SetFollowState(false);
+
+	lazer->SetFollowState(true);
 	lazer->SetText(lazerText);
 	return lazer;
 }

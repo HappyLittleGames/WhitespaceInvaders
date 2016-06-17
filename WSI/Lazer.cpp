@@ -14,8 +14,8 @@ Lazer::~Lazer()
 
 void Lazer::Update(sf::RenderWindow& window, float deltaTime)
 {
+	//m_text.setPosition(m_text.getPosition() + m_speed);
 	FollowWindow(window);
-	m_text.setPosition(m_text.getPosition() + m_speed);
 }
 
 

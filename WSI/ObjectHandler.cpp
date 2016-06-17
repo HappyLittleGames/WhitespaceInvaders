@@ -22,6 +22,11 @@ std::vector<Lazer*> & ObjectHandler::GetLazers()
 	return lazerRef;
 }
 
+Header * ObjectHandler::GetHeader()
+{
+	return m_header;
+}
+
 
 ObjectHandler::ObjectHandler()
 {
@@ -34,11 +39,12 @@ void ObjectHandler::UpdateEverything(sf::RenderWindow& window)
 {
 	float deltaTime = 1; // DON'T MAKE THIS HERE THO LOL
 	
+	m_header->Update(window, deltaTime);
 	m_player->Update(window, deltaTime);
-
+	
 	for (int i = 0; i < m_lazers.size(); i++)
 	{
-		m_lazers[i]->Update(window, deltaTime);
+		//m_lazers[i]->Update(window, deltaTime);
 	}
 }
 

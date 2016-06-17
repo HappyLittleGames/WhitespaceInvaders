@@ -11,6 +11,8 @@ public:
 	Player* GetPlayer() const;
 	std::vector<Lazer*> & GetLazers();
 
+	Header* GetHeader();
+
 	void UpdateEverything(sf::RenderWindow& window);
 	void DrawEverything(sf::RenderWindow& window);
 
