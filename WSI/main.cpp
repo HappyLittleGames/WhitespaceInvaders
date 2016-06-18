@@ -56,11 +56,19 @@ int main()
 						std::cout << "size of lazers: " << objectHandler->GetLazers().size() << "." << std::endl;
 					}
 
+					else if (event.key.code == sf::Keyboard::F1)
+					{
+						// Man you gotta make a commands class
+						objectHandler->AddInvader(LineWriter::NewInvader(window, objectHandler->GetLoader()->GetFont(), sf::Vector2f(window.getSize().x / 2, 40)));
+						// objectHandler->AddLazer(LineWriter::NewLazer(window, objectHandler->GetPlayer()->GetCommand()));
+						std::cout << "amount of invaders: " << objectHandler->GetInvaders().size() << "." << std::endl;
+					}
+
 					else if (event.key.code == sf::Keyboard::F2)
 					{
 						// Man you gotta make a commands class
-						objectHandler->AddInvader(window, sf::Vector2f(window.getSize().x / 2, 60));
-						std::cout << "amount of invaders: " << objectHandler->GetInvaders().size() << "." << std::endl;
+						objectHandler->NewGame(window);
+						std::cout << "new game going, invaders: " << objectHandler->GetInvaders().size() << ". Lazers: " << objectHandler->GetLazers().size() << "." << std::endl;
 					}
 
 					else if (event.key.code == sf::Keyboard::BackSpace)

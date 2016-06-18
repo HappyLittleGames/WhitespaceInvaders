@@ -35,7 +35,7 @@ Player* LineWriter::NewPlayer(const sf::RenderWindow& window, sf::Font& font)
 	playerCommand.setRotation(-90);
 	playerCommand.setFont(font);
 
-	playerCommand.setString("textext");
+	playerCommand.setString("?");
 
 	player->SetCommand(playerCommand);
 
@@ -48,7 +48,7 @@ Lazer* LineWriter::NewLazer(const sf::RenderWindow& window, const sf::Text& copy
 	std::cout << "Making Lazer pew pew pew" << std::endl;
 
 	Lazer* lazer = new Lazer();
-	sf::Text* lazerText = new sf::Text();
+	sf::Text* lazerText = new sf::Text;
 
 	lazerText->setCharacterSize(copyText.getCharacterSize());
 	lazerText->setPosition(copyText.getPosition());
@@ -62,10 +62,13 @@ Lazer* LineWriter::NewLazer(const sf::RenderWindow& window, const sf::Text& copy
 	return lazer;
 }
 
-Invader* LineWriter::NewInvader(const sf::RenderWindow & window, sf::Font & font, sf::Vector2f spawnPos)
+
+Invader* LineWriter::NewInvader(const sf::RenderWindow& window, sf::Font& font, sf::Vector2f spawnPos)
 {
+	std::cout << "Making Invader vade vade vade" << std::endl;
+
 	Invader* invader = new Invader();
-	sf::Text* invaderText = new sf::Text();
+	sf::Text* invaderText = new sf::Text;
 
 	invaderText->setCharacterSize(18);
 	invaderText->setPosition(spawnPos);
@@ -74,8 +77,8 @@ Invader* LineWriter::NewInvader(const sf::RenderWindow & window, sf::Font & font
 	invaderText->setFont(font);
 	invaderText->setString("Invade();");
 
+	invader->SetFollowState(true);
 	invader->SetText(invaderText);
-
 	return invader;
 }
 

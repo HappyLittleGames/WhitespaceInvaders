@@ -7,7 +7,7 @@ public:
 	Lazer();
 	~Lazer();
 
-	void Update(sf::RenderWindow& windwo, float deltaTime);
+	void Update(sf::RenderWindow& windwo, float deltaTime) override;
 	void Draw(sf::RenderWindow& window) override;
 
 };

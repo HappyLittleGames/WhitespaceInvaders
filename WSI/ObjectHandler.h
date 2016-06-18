@@ -14,7 +14,7 @@ public:
 	void AddLazer(Lazer* lazer);
 
 	std::vector<Invader*> GetInvaders() const;
-	void AddInvader(sf::RenderWindow& window, sf::Vector2f spawnPos);
+	void AddInvader(Invader* invader);
 
 	Header* GetHeader();
 
