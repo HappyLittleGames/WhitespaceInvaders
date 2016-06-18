@@ -62,3 +62,24 @@ Lazer* LineWriter::NewLazer(const sf::RenderWindow& window, const sf::Text& copy
 	return lazer;
 }
 
+
+
+Splosion* LineWriter::NewSplosion(const sf::RenderWindow& window, const sf::Text& copyText)
+{
+	std::cout << "Making splosion splosh splosh" << std::endl;
+
+	Splosion* splosion = new Splosion();
+	sf::Text* splosionText = new sf::Text;
+
+	splosionText->setCharacterSize(copyText.getCharacterSize());
+	splosionText->setPosition(copyText.getPosition());
+	splosionText->setColor(copyText.getColor());
+	splosionText->setRotation(copyText.getRotation());
+	splosionText->setFont(*copyText.getFont());
+	splosionText->setString(copyText.getString());
+
+	splosion->SetFollowState(true);
+	splosion->SetText(splosionText);
+	return splosion;
+}
+

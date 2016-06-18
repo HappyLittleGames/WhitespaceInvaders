@@ -70,6 +70,15 @@ int main()
 						objectHandler->NewGame(window);
 						std::cout << "new game going, invaders: " << objectHandler->GetInvaders().size() << ". Lazers: " << objectHandler->GetLazers().size() << "." << std::endl;
 					}
+					else if (event.key.code == sf::Keyboard::F3)
+					{
+						std::cout << "making lazers splode " << std::endl;
+						for each (Lazer* lazer in objectHandler->GetLazers())
+						{
+							//objectHandler->AddSplosion(LineWriter::NewSplosion(window, *lazer->GetText()));
+							lazer->SetExplodingState(true);
+						}						
+					}
 
 					else if (event.key.code == sf::Keyboard::BackSpace)
 					{
@@ -83,6 +92,7 @@ int main()
 		window.clear();
 
 		objectHandler->UpdateEverything(window);
+		objectHandler->ExplodeExploders(window);
 		objectHandler->DrawEverything(window);
 
 		window.display();

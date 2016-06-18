@@ -3,6 +3,7 @@
 
 Line::Line()
 {
+	m_exploding = false;
 }
 
 
@@ -20,6 +21,16 @@ sf::Text* Line::GetText() const
 void Line::SetText(sf::Text* text)
 {
 	m_text = text;
+}
+
+bool Line::IsExploding() const
+{
+	return m_exploding;
+}
+
+void Line::SetExplodingState(bool state)
+{
+	m_exploding = state;
 }
 
 

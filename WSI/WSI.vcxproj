@@ -164,6 +164,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ObjectHandler.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Splosion.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssetLoader.h" />
@@ -175,6 +176,7 @@
     <ClInclude Include="LineWriter.h" />
     <ClInclude Include="ObjectHandler.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Splosion.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
