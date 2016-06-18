@@ -21,7 +21,7 @@ public:
 
 	Header* GetHeader();
 
-	void UpdateEverything(sf::RenderWindow& window);
+	void UpdateEverything(sf::RenderWindow& window, float deltaTime);
 	void DrawEverything(sf::RenderWindow& window);
 
 	void NewGame(sf::RenderWindow& window);

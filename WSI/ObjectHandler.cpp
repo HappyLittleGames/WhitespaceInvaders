@@ -64,10 +64,8 @@ ObjectHandler::ObjectHandler()
 }
 
 
-void ObjectHandler::UpdateEverything(sf::RenderWindow& window)
-{
-	float deltaTime = 1; // DON'T MAKE THIS HERE THO LOL
-	
+void ObjectHandler::UpdateEverything(sf::RenderWindow& window, float deltaTime)
+{	
 	m_header->Update(window, deltaTime);
 	m_player->Update(window, deltaTime);
 	
@@ -128,7 +126,17 @@ void ObjectHandler::ExplodeExploders(sf::RenderWindow& window)
 		if (m_lazers[i]->IsExploding())
 		{
 			Line* exploder = m_lazers[i];
-			AddSplosion(LineWriter::NewSplosion(window, *m_lazers[i]->GetText()));
+			for (int j = 0; j < exploder->GetText()->getString().getSize(); j++)
+			{
+				sf::String singleChar = "";
+				for (int k = 0; k < j; k++)
+				{
+					singleChar += " ";
+				}
+				singleChar += exploder->GetText()->getString()[j];
+				AddSplosion(LineWriter::NewSplosion(window, *m_lazers[i]->GetText()));
+				m_splosions.back()->SetString(singleChar);
+			}
 			m_lazers.erase(m_lazers.begin() + i);
 			delete exploder;
 		}

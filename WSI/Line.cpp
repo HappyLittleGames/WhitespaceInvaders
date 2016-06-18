@@ -23,6 +23,11 @@ void Line::SetText(sf::Text* text)
 	m_text = text;
 }
 
+void Line::SetString(sf::String string)
+{
+	m_text->setString(string);
+}
+
 bool Line::IsExploding() const
 {
 	return m_exploding;

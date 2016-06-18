@@ -1,6 +1,7 @@
 #pragma once
 #include "Line.h"
 
+
 class Splosion : public Line
 {
 public:
@@ -9,6 +10,8 @@ public:
 
 	void Update(sf::RenderWindow& windwo, float deltaTime) override;
 	void Draw(sf::RenderWindow& window) override;
-
+private:
+	float m_lifeTime;
+	float m_elapsedTime;
 };
 

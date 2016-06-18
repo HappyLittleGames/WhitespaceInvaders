@@ -11,6 +11,10 @@ int main()
 	window.setVerticalSyncEnabled(true);
 	window.setFramerateLimit(60);
 
+	sf::Clock clock;
+	sf::Time time;
+	float deltaTime = 0;
+
 	sf::Vector2i mousePos;
 
 	objectHandler->NewGame(window);
@@ -91,7 +95,12 @@ int main()
 
 		window.clear();
 
-		objectHandler->UpdateEverything(window);
+		time = clock.getElapsedTime();
+		///std::cout << "Delta Time: " << time.asSeconds() << "." << std::endl;
+		deltaTime = time.asSeconds();
+		clock.restart();
+
+		objectHandler->UpdateEverything(window, deltaTime);
 		objectHandler->ExplodeExploders(window);
 		objectHandler->DrawEverything(window);
 

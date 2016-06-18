@@ -9,6 +9,7 @@ public:
 
 	sf::Text* GetText() const;
 	void SetText(sf::Text* text);
+	void SetString(sf::String string);
 
 	bool IsExploding() const;
 	void SetExplodingState(bool state);
