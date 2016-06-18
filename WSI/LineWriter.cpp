@@ -63,11 +63,28 @@ Lazer* LineWriter::NewLazer(const sf::RenderWindow& window, const sf::Text& copy
 }
 
 
+Invader* LineWriter::NewInvader(const sf::RenderWindow& window, const sf::Text& copyText)
+{
+	std::cout << "Making Lazer pew pew pew" << std::endl;
+
+	Invader* invader = new Invader();
+	sf::Text* invaderText = new sf::Text;
+
+	invaderText->setCharacterSize(copyText.getCharacterSize());
+	invaderText->setPosition(sf::Vector2f(window.getSize().x / 2, 40));
+	invaderText->setColor(copyText.getColor());
+	invaderText->setRotation(90);
+	invaderText->setFont(*copyText.getFont());
+	invaderText->setString(copyText.getString());
+
+	invader->SetFollowState(true);
+	invader->SetText(invaderText);
+	return invader;
+}
+
 
 Splosion* LineWriter::NewSplosion(const sf::RenderWindow& window, const sf::Text& copyText)
 {
-	std::cout << "Making splosion splosh splosh" << std::endl;
-
 	Splosion* splosion = new Splosion();
 	sf::Text* splosionText = new sf::Text;
 

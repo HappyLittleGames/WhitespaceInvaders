@@ -15,6 +15,8 @@ public:
 
 	static Lazer* NewLazer(const sf::RenderWindow& window, const sf::Text& copyText);
 
+	static Invader* NewInvader(const sf::RenderWindow& window, const sf::Text& copyText);
+
 	static Splosion* NewSplosion(const sf::RenderWindow& window, const sf::Text& copyText);
 };
 

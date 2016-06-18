@@ -20,5 +20,11 @@ void Lazer::Update(sf::RenderWindow& window, float deltaTime)
 
 void Lazer::Draw(sf::RenderWindow& window)
 {
+#ifdef _DEBUG
+	sf::RectangleShape debugShape = sf::RectangleShape(sf::Vector2f(m_text->getGlobalBounds().width, m_text->getGlobalBounds().height));
+	debugShape.setPosition(sf::Vector2f(m_text->getGlobalBounds().left, m_text->getGlobalBounds().top));
+	debugShape.setFillColor(sf::Color::Red);
+	window.draw(debugShape);
+#endif
 	window.draw(*m_text);
 }

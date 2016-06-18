@@ -30,7 +30,7 @@ void Splosion::Draw(sf::RenderWindow& window)
 {
 	if (m_elapsedTime < m_lifeTime)
 	{
-		// remove instead ofc idiot
+		// remove abd delete ofc idiot
 		window.draw(*m_text);
 	}
 }

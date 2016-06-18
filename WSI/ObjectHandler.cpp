@@ -29,13 +29,13 @@ void ObjectHandler::AddLazer(Lazer* lazer)
 }
 
 
-std::vector<Lazer*> ObjectHandler::GetInvaders() const
+std::vector<Invader*> ObjectHandler::GetInvaders() const
 {
 	return m_invaders;
 }
 
 
-void ObjectHandler::AddInvader(Lazer* invader)
+void ObjectHandler::AddInvader(Invader* invader)
 {
 	m_invaders.push_back(invader);
 }
@@ -110,7 +110,7 @@ void ObjectHandler::NewGame(sf::RenderWindow& window)
 	// delete them pointers too
 	m_player = LineWriter::NewPlayer(window, m_loader->GetFont());
 	m_lazers = std::vector<Lazer*>{};
-	m_invaders = std::vector<Lazer*>{};
+	m_invaders = std::vector<Invader*>{};
 	m_splosions = std::vector<Splosion*>{};
 }
 
@@ -126,6 +126,7 @@ void ObjectHandler::ExplodeExploders(sf::RenderWindow& window)
 		if (m_lazers[i]->IsExploding())
 		{
 			Line* exploder = m_lazers[i];
+			std::cout << "Making splosion with string of " << exploder->GetText()->getString().getSize() << "." << std::endl;
 			for (int j = 0; j < exploder->GetText()->getString().getSize(); j++)
 			{
 				sf::String singleChar = "";
