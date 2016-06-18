@@ -59,8 +59,8 @@ int main()
 					else if (event.key.code == sf::Keyboard::F1)
 					{
 						// Man you gotta make a commands class
-						objectHandler->AddInvader(LineWriter::NewInvader(window, objectHandler->GetLoader()->GetFont(), sf::Vector2f(window.getSize().x / 2, 40)));
-						// objectHandler->AddLazer(LineWriter::NewLazer(window, objectHandler->GetPlayer()->GetCommand()));
+						// objectHandler->AddInvader(LineWriter::NewInvader(window, objectHandler->GetLoader()->GetFont(), sf::Vector2f(window.getSize().x / 2, 40)));
+						objectHandler->AddInvader(LineWriter::NewLazer(window, objectHandler->GetPlayer()->GetCommand()));
 						std::cout << "amount of invaders: " << objectHandler->GetInvaders().size() << "." << std::endl;
 					}
 

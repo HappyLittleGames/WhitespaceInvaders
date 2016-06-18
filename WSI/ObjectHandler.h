@@ -13,8 +13,8 @@ public:
 	std::vector<Lazer*> GetLazers() const;
 	void AddLazer(Lazer* lazer);
 
-	std::vector<Invader*> GetInvaders() const;
-	void AddInvader(Invader* invader);
+	std::vector<Lazer*> GetInvaders() const;
+	void AddInvader(Lazer* invader);
 
 	Header* GetHeader();
 
@@ -31,7 +31,7 @@ private:
 	Header* m_header;
 	AssetLoader* m_loader;
 	Player* m_player;
-	std::vector<Invader*> m_invaders;
+	std::vector<Lazer*> m_invaders;
 	std::vector<Lazer*> m_lazers;
 };
 

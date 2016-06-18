@@ -29,13 +29,13 @@ void ObjectHandler::AddLazer(Lazer* lazer)
 }
 
 
-std::vector<Invader*> ObjectHandler::GetInvaders() const
+std::vector<Lazer*> ObjectHandler::GetInvaders() const
 {
 	return m_invaders;
 }
 
 
-void ObjectHandler::AddInvader(Invader* invader)
+void ObjectHandler::AddInvader(Lazer* invader)
 {
 	m_invaders.push_back(invader);
 }
@@ -94,7 +94,7 @@ void ObjectHandler::NewGame(sf::RenderWindow& window)
 	// delete them pointers too
 	m_player = LineWriter::NewPlayer(window, m_loader->GetFont());
 	m_lazers = std::vector<Lazer*>{};
-	m_invaders = std::vector<Invader*>{};
+	m_invaders = std::vector<Lazer*>{};
 }
 
 AssetLoader* ObjectHandler::GetLoader()

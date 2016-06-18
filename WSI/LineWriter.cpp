@@ -62,23 +62,3 @@ Lazer* LineWriter::NewLazer(const sf::RenderWindow& window, const sf::Text& copy
 	return lazer;
 }
 
-
-Invader* LineWriter::NewInvader(const sf::RenderWindow& window, sf::Font& font, sf::Vector2f spawnPos)
-{
-	std::cout << "Making Invader vade vade vade" << std::endl;
-
-	Invader* invader = new Invader();
-	sf::Text* invaderText = new sf::Text;
-
-	invaderText->setCharacterSize(18);
-	invaderText->setPosition(spawnPos);
-	invaderText->setColor(sf::Color::White);
-	invaderText->setRotation(90);
-	invaderText->setFont(font);
-	invaderText->setString("Invade();");
-
-	invader->SetFollowState(true);
-	invader->SetText(invaderText);
-	return invader;
-}
-
