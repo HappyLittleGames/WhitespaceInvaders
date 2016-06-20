@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "ObjectHandler.h"
+#include "Commands.h"
 
 int main()
 {
@@ -58,6 +59,8 @@ int main()
 						objectHandler->AddLazer(LineWriter::NewLazer(window, objectHandler->GetPlayer()->GetCommand()));
 						objectHandler->GetPlayer()->EnterText(event);
 						std::cout << "size of lazers: " << objectHandler->GetLazers().size() << "." << std::endl;
+
+						Commands::EnterCommand(window, objectHandler->GetPlayer()->GetCommand().getString());
 					}
 
 					else if (event.key.code == sf::Keyboard::F1)

@@ -155,6 +155,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AssetLoader.cpp" />
+    <ClCompile Include="Commands.cpp" />
     <ClCompile Include="DrawableObject.cpp" />
     <ClCompile Include="Header.cpp" />
     <ClCompile Include="Invader.cpp" />
@@ -168,6 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssetLoader.h" />
+    <ClInclude Include="Commands.h" />
     <ClInclude Include="DrawableObject.h" />
     <ClInclude Include="Header.h" />
     <ClInclude Include="Invader.h" />
