@@ -2,6 +2,7 @@
 
 
 
+
 Header::Header(sf::Font& font)
 {
 	m_title = new sf::Text();
@@ -40,7 +41,7 @@ void Header::Update(sf::RenderWindow& window, float deltaTime)
 {
 	if (m_isDragging)
 	{
-		
+		// printf("windowPos: %u, %u.\n", window.getPosition().x, window.getPosition().y);
 		m_mouseChange = sf::Mouse::getPosition() - m_mousePos;
 		window.setPosition(window.getPosition() + sf::Mouse::getPosition() - m_mouseChange - m_clickedPos);
 	}
