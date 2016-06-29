@@ -50,6 +50,7 @@ void Commands::EnterCommand(sf::RenderWindow & window, const std::string& comman
 	else if (command == "newgame")
 	{
 		// do nothing :(
+		// run this shit in main k
 	}
 	else if ((command == "quit") || (command == "exit"))
 	{

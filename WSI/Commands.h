@@ -1,6 +1,7 @@
 #pragma once
 #include "ObjectHandler.h"
 #include "LineWriter.h"
+#include "ScreenHandler.h"
 
 static class Commands
 {

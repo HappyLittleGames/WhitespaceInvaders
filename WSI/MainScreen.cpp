@@ -7,7 +7,7 @@ MainScreen::MainScreen()
 	m_spawnRate = 2.2;
 	m_spawnTime = 0;
 
-	m_textTemplate->setColor(sf::Color(100, 255, 100, 255));
+	m_textTemplate->setColor(sf::Color(255, 255, 255, 255));
 }
 
 

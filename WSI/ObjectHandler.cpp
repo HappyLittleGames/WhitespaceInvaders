@@ -81,27 +81,30 @@ void ObjectHandler::UpdateEverything(sf::RenderWindow& window, float deltaTime)
 	{
 		m_invaders[i]->Update(window, deltaTime);
 
-		if ((m_invaders[i]->GetText()->getPosition().y + window.getPosition().y) > sf::VideoMode::getDesktopMode().height + 90)
+		if (m_player->GetLives() > 0)
 		{
-			m_invaders[i]->~Invader();
-			m_invaders.erase(m_invaders.begin() + i);
-			
-			m_player->SetLives(m_player->GetLives() - 1);
-			std::string titleString = "Lives: ";
-			titleString.push_back((char)m_player->GetLives());
-			std::cout << titleString << std::endl;
-			m_header->SetTitle(titleString);
-			std::cout << "InvaderExploded!" << std::endl;
+			if ((m_invaders[i]->GetText()->getPosition().y + window.getPosition().y) > sf::VideoMode::getDesktopMode().height + 90)
+			{
+				m_invaders[i]->~Invader();
+				m_invaders.erase(m_invaders.begin() + i);
 
-			for each (Line* lazer in m_lazers)
-			{
-				lazer->SetExplodingState(true);
-				lazer->GetText()->setColor(sf::Color(255, 0, 0, 255));
-			}
-			for each (Line* invader in m_invaders)
-			{
-				invader->SetExplodingState(true);
-				invader->GetText()->setColor(sf::Color(255, 0, 0, 255));
+				m_player->SetLives(m_player->GetLives() - 1);
+				std::string titleString = "Lives: ";
+				titleString.push_back((char)m_player->GetLives());
+				std::cout << titleString << std::endl;
+				m_header->SetTitle(titleString);
+				std::cout << "InvaderExploded!" << std::endl;
+
+				for each (Line* lazer in m_lazers)
+				{
+					lazer->SetExplodingState(true);
+					lazer->GetText()->setColor(sf::Color(255, 0, 0, 255));
+				}
+				for each (Line* invader in m_invaders)
+				{
+					invader->SetExplodingState(true);
+					invader->GetText()->setColor(sf::Color(255, 0, 0, 255));
+				}
 			}
 		}
 	}

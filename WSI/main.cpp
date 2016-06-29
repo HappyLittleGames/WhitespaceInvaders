@@ -68,7 +68,7 @@ int main()
 					{
 						if (objectHandler->GetPlayer()->GetCommand().getString() == "newgame")
 						{
-							screenHandler->NextScreen();
+							screenHandler->SetScreen(1);
 							int lives = 3; // ????
 							objectHandler->GetPlayer()->SetLives(lives);
 							objectHandler->GetHeader()->SetTitle("Lives: 3");
@@ -135,15 +135,6 @@ int main()
 		clock.restart();
 
 		screenHandler->UpdateScreen(window, deltaTime);
-
-		/*if (gameScreen != nullptr)
-		{
-			if (gameScreen->UpdateScreen(window, deltaTime))
-			{
-				gameScreen->~Screen();
-				gameScreen = new GameOverScreen();
-			}
-		}*/
 
 		objectHandler->UpdateEverything(window, deltaTime);
 		objectHandler->ExplodeExploders(window);

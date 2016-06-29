@@ -35,8 +35,13 @@ void ScreenHandler::UpdateScreen(sf::RenderWindow & window, float deltaTime)
 	{
 		if (m_screens[m_screenIndex]->UpdateScreen(window, deltaTime))
 		{
-
+			NextScreen();
 		}
 	}
 	
+}
+
+void ScreenHandler::SetScreen(unsigned index)
+{
+	m_screenIndex = index;
 }
