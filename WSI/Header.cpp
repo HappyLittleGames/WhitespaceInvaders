@@ -25,6 +25,11 @@ void Header::SetDragState(bool state)
 	m_isDragging = state;
 }
 
+void Header::SetTitle(std::string string)
+{
+	m_title->setString(string);
+}
+
 
 Header::~Header()
 {

@@ -2,6 +2,7 @@
 #include "LineWriter.h"
 #include "Header.h"
 #include "AssetLoader.h"
+#include <stdio.h>
 
 class ObjectHandler
 {
@@ -29,9 +30,18 @@ public:
 	AssetLoader* GetLoader();
 
 	void ExplodeExploders(sf::RenderWindow& window);
+
+	float GetGameAngle() const;
+	void SetGameAngle(float angle);
+
+	bool CheckCollision(Line*& target, Line*& munition);
+	void RunCollisions(std::vector<Invader*>& targets, std::vector<Lazer*>& munitions);
+
 private:
 	ObjectHandler();
 	static ObjectHandler* m_instance;
+
+	float m_gameAngle;
 
 	Header* m_header;
 	AssetLoader* m_loader;

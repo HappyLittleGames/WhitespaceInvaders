@@ -11,8 +11,12 @@ public:
 	void SetText(sf::Text* text);
 	void SetString(sf::String string);
 
+	void SetWindowPos(sf::Vector2f windowPos);
+
 	bool IsExploding() const;
 	void SetExplodingState(bool state);
+
+	void Bounce(sf::RenderWindow& window);
 protected:
 	void FollowWindow(sf::RenderWindow& window) override;
 

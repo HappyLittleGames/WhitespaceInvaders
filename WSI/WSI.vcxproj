@@ -157,28 +157,38 @@
     <ClCompile Include="AssetLoader.cpp" />
     <ClCompile Include="Commands.cpp" />
     <ClCompile Include="DrawableObject.cpp" />
+    <ClCompile Include="GameOverScreen.cpp" />
     <ClCompile Include="Header.cpp" />
     <ClCompile Include="Invader.cpp" />
     <ClCompile Include="Lazer.cpp" />
     <ClCompile Include="Line.cpp" />
     <ClCompile Include="LineWriter.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainScreen.cpp" />
     <ClCompile Include="ObjectHandler.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Screen.cpp" />
+    <ClCompile Include="ScreenHandler.cpp" />
     <ClCompile Include="Splosion.cpp" />
+    <ClCompile Include="Trail.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssetLoader.h" />
     <ClInclude Include="Commands.h" />
     <ClInclude Include="DrawableObject.h" />
+    <ClInclude Include="GameOverScreen.h" />
     <ClInclude Include="Header.h" />
     <ClInclude Include="Invader.h" />
     <ClInclude Include="Lazer.h" />
     <ClInclude Include="Line.h" />
     <ClInclude Include="LineWriter.h" />
+    <ClInclude Include="MainScreen.h" />
     <ClInclude Include="ObjectHandler.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Screen.h" />
+    <ClInclude Include="ScreenHandler.h" />
     <ClInclude Include="Splosion.h" />
+    <ClInclude Include="Trail.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -59,7 +59,6 @@ void Player::EnterText(sf::Event& event)
 {
 	if (event.key.code == sf::Keyboard::Return)
 	{
-
 		m_command.setString("");
 	}
 	else if (event.key.code == sf::Keyboard::F1)
@@ -88,4 +87,21 @@ void Player::EnterText(sf::Event& event)
 		std::cout << "entered " << character << "." << std::endl;
 		m_command.setString(m_command.getString() + character);
 	}
+}
+
+void Player::SetLives(int lives)
+{
+	if (lives >= 0)
+	{
+		m_lives = lives;
+	}
+	else
+	{
+		m_lives = 0;
+	}
+}
+
+int Player::GetLives()
+{
+	return m_lives;
 }

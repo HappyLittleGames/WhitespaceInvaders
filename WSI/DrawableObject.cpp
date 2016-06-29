@@ -22,6 +22,11 @@ void DrawableObject::SetSpeed(sf::Vector2f speed)
 	m_speed = speed;
 }
 
+void DrawableObject::Bounce()
+{
+	m_speed = sf::Vector2f(-m_speed.x, m_speed.y);
+}
+
 
 bool DrawableObject::GetFollowState() const
 {

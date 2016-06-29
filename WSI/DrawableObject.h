@@ -12,6 +12,7 @@ public:
 
 	sf::Vector2f GetSpeed() const;
 	void SetSpeed(sf::Vector2f speed);
+	void Bounce();
 
 	bool GetFollowState() const;
 	void SetFollowState(bool state);

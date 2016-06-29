@@ -12,7 +12,7 @@ LineWriter::~LineWriter()
 }
 
 
-Player* LineWriter::NewPlayer(const sf::RenderWindow& window, sf::Font& font)
+Player* LineWriter::NewPlayer(const sf::RenderWindow& window, sf::Font& font, float angle)
 {
 	Player* player = new Player();
 	sf::Text* playerText = new sf::Text();
@@ -20,22 +20,22 @@ Player* LineWriter::NewPlayer(const sf::RenderWindow& window, sf::Font& font)
 	playerText->setCharacterSize(18);
 	playerText->setPosition((window.getSize().x / 2 - (playerText->getCharacterSize()/2)), window.getSize().y - 16);
 	playerText->setColor(sf::Color::White);
-	playerText->setRotation(-90);
+	playerText->setRotation(angle);
 	playerText->setFont(font);
 
-	playerText->setString("Fransmän: ");
+	playerText->setString("C:/player> ");
 
 	player->SetText(playerText);
 	// sort the fucker out
 	sf::Text playerCommand = sf::Text();
 
 	playerCommand.setCharacterSize(18);
-	playerCommand.setPosition((playerText->getPosition() - sf::Vector2f(0,(playerText->getCharacterSize() / 1.7) * playerText->getString().getSize())));
+	playerCommand.setPosition((playerText->getPosition() - sf::Vector2f(0,(playerText->getCharacterSize() / 1.8) * playerText->getString().getSize())));
 	playerCommand.setColor(sf::Color::White);
-	playerCommand.setRotation(-90);
+	playerCommand.setRotation(angle);
 	playerCommand.setFont(font);
 
-	playerCommand.setString("?");
+	playerCommand.setString("");
 
 	player->SetCommand(playerCommand);
 
@@ -43,7 +43,7 @@ Player* LineWriter::NewPlayer(const sf::RenderWindow& window, sf::Font& font)
 }
 
 
-Lazer* LineWriter::NewLazer(const sf::RenderWindow& window, const sf::Text& copyText)
+Lazer* LineWriter::NewLazer(const sf::RenderWindow& window, const sf::Text& copyText, float angle, sf::Vector2f speed)
 {
 	std::cout << "Making Lazer pew pew pew" << std::endl;
 
@@ -53,17 +53,19 @@ Lazer* LineWriter::NewLazer(const sf::RenderWindow& window, const sf::Text& copy
 	lazerText->setCharacterSize(copyText.getCharacterSize());
 	lazerText->setPosition(copyText.getPosition());
 	lazerText->setColor(copyText.getColor());
-	lazerText->setRotation(copyText.getRotation());
+	lazerText->setRotation(angle);
 	lazerText->setFont(*copyText.getFont());
 	lazerText->setString(copyText.getString());
 
+	lazer->SetWindowPos(sf::Vector2f(window.getPosition().x, window.getPosition().y));
+	lazer->SetSpeed(speed);
 	lazer->SetFollowState(true);
 	lazer->SetText(lazerText);
 	return lazer;
 }
 
 
-Invader* LineWriter::NewInvader(const sf::RenderWindow& window, const sf::Text& copyText)
+Invader* LineWriter::NewInvader(const sf::RenderWindow& window, const sf::Text& copyText, float angle, sf::Vector2f speed, sf::Vector2f position)
 {
 	std::cout << "Making Lazer pew pew pew" << std::endl;
 
@@ -71,19 +73,21 @@ Invader* LineWriter::NewInvader(const sf::RenderWindow& window, const sf::Text& 
 	sf::Text* invaderText = new sf::Text;
 
 	invaderText->setCharacterSize(copyText.getCharacterSize());
-	invaderText->setPosition(sf::Vector2f(window.getSize().x / 2, 40));
+	invaderText->setPosition(position);
 	invaderText->setColor(copyText.getColor());
-	invaderText->setRotation(90);
+	invaderText->setRotation(angle);
 	invaderText->setFont(*copyText.getFont());
 	invaderText->setString(copyText.getString());
 
+	invader->SetSpeed(speed);
 	invader->SetFollowState(true);
+	invader->SetTrailState(true);
 	invader->SetText(invaderText);
 	return invader;
 }
 
 
-Splosion* LineWriter::NewSplosion(const sf::RenderWindow& window, const sf::Text& copyText)
+Splosion* LineWriter::NewSplosion(const sf::RenderWindow& window, const sf::Text& copyText, float angle)
 {
 	Splosion* splosion = new Splosion();
 	sf::Text* splosionText = new sf::Text;
@@ -91,10 +95,11 @@ Splosion* LineWriter::NewSplosion(const sf::RenderWindow& window, const sf::Text
 	splosionText->setCharacterSize(copyText.getCharacterSize());
 	splosionText->setPosition(copyText.getPosition());
 	splosionText->setColor(copyText.getColor());
-	splosionText->setRotation(copyText.getRotation());
+	splosionText->setRotation(angle);
 	splosionText->setFont(*copyText.getFont());
 	splosionText->setString(copyText.getString());
 
+	splosion->SetWindowPos(sf::Vector2f(window.getPosition().x, window.getPosition().y));
 	splosion->SetFollowState(true);
 	splosion->SetText(splosionText);
 	return splosion;

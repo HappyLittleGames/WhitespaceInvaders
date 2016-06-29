@@ -18,7 +18,11 @@ public:
 
 	void EnterText(sf::Event& event);
 
+	void SetLives(int lives);
+	int GetLives();
+
 private:
 	sf::Text m_command;
+	int m_lives;
 };
 

@@ -12,6 +12,8 @@ public:
 
 	void SetDragState(bool state);
 
+	void SetTitle(std::string string);
+
 private:
 	sf::RectangleShape m_area;
 	sf::Text* m_title;

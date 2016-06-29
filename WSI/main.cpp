@@ -1,12 +1,20 @@
 #include <SFML/Graphics.hpp>
 #include "ObjectHandler.h"
 #include "Commands.h"
+#include <windows.h>
+#include "GameOverScreen.h"
+#include "MainScreen.h"
+#include "ScreenHandler.h"
 
 int main()
 {
+#ifndef _DEBUG
+	FreeConsole();
+#endif
+
 	ObjectHandler* objectHandler = ObjectHandler::GetInstance();
 
-	sf::VideoMode windowMode = sf::VideoMode(256, 512);
+	sf::VideoMode windowMode = sf::VideoMode(310, 512);
 
 	sf::RenderWindow window(windowMode, "whitespace", sf::Style::None);
 	window.setVerticalSyncEnabled(true);
@@ -19,6 +27,8 @@ int main()
 	sf::Vector2i mousePos;
 
 	objectHandler->NewGame(window);
+
+	ScreenHandler* screenHandler = new ScreenHandler();
 
 	while (window.isOpen())
 	{
@@ -56,26 +66,38 @@ int main()
 				{
 					if (event.key.code == sf::Keyboard::Return)
 					{
-						objectHandler->AddLazer(LineWriter::NewLazer(window, objectHandler->GetPlayer()->GetCommand()));
-						objectHandler->GetPlayer()->EnterText(event);
-						std::cout << "size of lazers: " << objectHandler->GetLazers().size() << "." << std::endl;
-
-						Commands::EnterCommand(window, objectHandler->GetPlayer()->GetCommand().getString());
+						if (objectHandler->GetPlayer()->GetCommand().getString() == "newgame")
+						{
+							screenHandler->NextScreen();
+							int lives = 3; // ????
+							objectHandler->GetPlayer()->SetLives(lives);
+							objectHandler->GetHeader()->SetTitle("Lives: 3");
+						}
+						Commands::EnterCommand(window, objectHandler->GetPlayer()->GetCommand().getString(), event);
 					}
 
 					else if (event.key.code == sf::Keyboard::F1)
 					{
 						// Man you gotta make a commands class
 						// objectHandler->AddInvader(LineWriter::NewInvader(window, objectHandler->GetLoader()->GetFont(), sf::Vector2f(window.getSize().x / 2, 40)));
-						objectHandler->AddInvader(LineWriter::NewInvader(window, objectHandler->GetPlayer()->GetCommand()));
+						objectHandler->AddInvader(LineWriter::NewInvader(window, objectHandler->GetPlayer()->GetCommand(), objectHandler->GetGameAngle(), sf::Vector2f((rand() % 30) - 10, 50), sf::Vector2f(window.getSize().x/2, 60)));
 						std::cout << "amount of invaders: " << objectHandler->GetInvaders().size() << "." << std::endl;
 					}
 
 					else if (event.key.code == sf::Keyboard::F2)
 					{
 						// Man you gotta make a commands class
-						objectHandler->NewGame(window);
-						std::cout << "new game going, invaders: " << objectHandler->GetInvaders().size() << ". Lazers: " << objectHandler->GetLazers().size() << "." << std::endl;
+						
+						for each (Line* lazer in objectHandler->GetLazers())
+						{
+							lazer->SetExplodingState(true);
+							lazer->GetText()->setColor(sf::Color(255, 0, 0, 255));
+						}
+						for each (Line* invader in objectHandler->GetInvaders())
+						{
+							invader->SetExplodingState(true);
+							invader->GetText()->setColor(sf::Color(255, 0, 0, 255));
+						}
 					}
 					else if (event.key.code == sf::Keyboard::F3)
 					{
@@ -84,7 +106,16 @@ int main()
 						{
 							//objectHandler->AddSplosion(LineWriter::NewSplosion(window, *lazer->GetText()));
 							lazer->SetExplodingState(true);
-						}						
+						}	
+						for each (Invader* invader in objectHandler->GetInvaders())
+						{
+							//objectHandler->AddSplosion(LineWriter::NewSplosion(window, *lazer->GetText()));
+							invader->SetExplodingState(true);
+						}
+					}
+					else if (event.key.code == sf::Keyboard::F4)
+					{
+						screenHandler->NextScreen();
 					}
 
 					else if (event.key.code == sf::Keyboard::BackSpace)
@@ -99,9 +130,20 @@ int main()
 		window.clear();
 
 		time = clock.getElapsedTime();
-		///std::cout << "Delta Time: " << time.asSeconds() << "." << std::endl;
+		// std::cout << "Delta Time: " << time.asSeconds() << "." << std::endl;
 		deltaTime = time.asSeconds();
 		clock.restart();
+
+		screenHandler->UpdateScreen(window, deltaTime);
+
+		/*if (gameScreen != nullptr)
+		{
+			if (gameScreen->UpdateScreen(window, deltaTime))
+			{
+				gameScreen->~Screen();
+				gameScreen = new GameOverScreen();
+			}
+		}*/
 
 		objectHandler->UpdateEverything(window, deltaTime);
 		objectHandler->ExplodeExploders(window);
