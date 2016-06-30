@@ -58,6 +58,16 @@ void Commands::EnterCommand(sf::RenderWindow & window, const std::string& comman
 			lazer->SetExplodingState(true);
 		}
 	}
+	else if (command == "left")
+	{
+		ObjectHandler::GetInstance()->GetPlayer()->GetText()->setPosition(ObjectHandler::GetInstance()->GetPlayer()->GetText()->getPosition() + sf::Vector2f(-45, 0));
+		ObjectHandler::GetInstance()->GetPlayer()->GetCommand().setPosition(ObjectHandler::GetInstance()->GetPlayer()->GetCommand().getPosition() + sf::Vector2f(-45, 0));
+	}
+	else if (command == "right")
+	{
+		ObjectHandler::GetInstance()->GetPlayer()->GetText()->setPosition(ObjectHandler::GetInstance()->GetPlayer()->GetText()->getPosition() + sf::Vector2f(45, 0));
+		ObjectHandler::GetInstance()->GetPlayer()->GetCommand().setPosition(ObjectHandler::GetInstance()->GetPlayer()->GetCommand().getPosition() + sf::Vector2f(45, 0));
+	}
 	else if ((command == "quit") || (command == "exit"))
 	{
 		window.close();
