@@ -64,15 +64,18 @@ void Commands::EnterCommand(sf::RenderWindow & window, const std::string& comman
 	}
 	else
 	{
-		sf::Text refText = *ObjectHandler::GetInstance()->GetPlayer()->GetText();
+		if (ObjectHandler::GetInstance()->GetPlayer()->GetCommand().getString().getSize() > 0);
+		{
+			sf::Text refText = *ObjectHandler::GetInstance()->GetPlayer()->GetText();
 
-		ObjectHandler::GetInstance()->AddInvader(LineWriter::NewInvader(window, refText, ObjectHandler::GetInstance()->GetGameAngle() -180, sf::Vector2f(0, 0), ObjectHandler::GetInstance()->GetPlayer()->GetText()->getPosition()));
-		ObjectHandler::GetInstance()->GetInvaders().back()->SetString(GetError());
-		ObjectHandler::GetInstance()->GetInvaders().back()->SetFollowState(false);
-		ObjectHandler::GetInstance()->GetInvaders().back()->SetTrailState(false);
-		ObjectHandler::GetInstance()->GetInvaders().back()->SetWindowPos(sf::Vector2f(window.getPosition().x, window.getPosition().y));
+			ObjectHandler::GetInstance()->AddInvader(LineWriter::NewInvader(window, refText, ObjectHandler::GetInstance()->GetGameAngle() - 180, sf::Vector2f(0, 0), ObjectHandler::GetInstance()->GetPlayer()->GetText()->getPosition()));
+			ObjectHandler::GetInstance()->GetInvaders().back()->SetString(GetError());
+			ObjectHandler::GetInstance()->GetInvaders().back()->SetFollowState(false);
+			ObjectHandler::GetInstance()->GetInvaders().back()->SetTrailState(false);
+			ObjectHandler::GetInstance()->GetInvaders().back()->SetWindowPos(sf::Vector2f(window.getPosition().x, window.getPosition().y));
 
-		window.setPosition(window.getPosition() + sf::Vector2i(ObjectHandler::GetInstance()->GetPlayer()->GetText()->getCharacterSize() * 4.5, 0));
+			window.setPosition(window.getPosition() + sf::Vector2i(ObjectHandler::GetInstance()->GetPlayer()->GetText()->getCharacterSize() * 4.5, 0));
+		}
 	}
 	ObjectHandler::GetInstance()->GetPlayer()->EnterText(event);
 }
@@ -96,4 +99,12 @@ std::vector<std::string> Commands::GetCommands()
 std::string Commands::GetError()
 {
 	return ObjectHandler::GetInstance()->GetPlayer()->GetText()->getString() + ObjectHandler::GetInstance()->GetPlayer()->GetCommand().getString() + "\n'" + ObjectHandler::GetInstance()->GetPlayer()->GetCommand().getString() + "' is not recognized as an internal nor external command, \noperable program or batch file. \nType 'help' for more information.";
+}
+
+void Commands::SetExploding(std::vector<Line*>& lines)
+{
+	for each (Line* line in lines)
+	{
+		line->SetExplodingState(true);
+	}
 }

@@ -115,7 +115,12 @@ int main()
 					}
 					else if (event.key.code == sf::Keyboard::F4)
 					{
+						objectHandler->GetPlayer()->SetLives(3);
 						screenHandler->NextScreen();
+						for each (Invader* invader in objectHandler->GetInvaders())
+						{
+							invader->SetExplodingState(true);
+						}
 					}
 
 					else if (event.key.code == sf::Keyboard::BackSpace)

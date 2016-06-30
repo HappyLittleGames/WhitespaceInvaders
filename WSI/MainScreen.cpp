@@ -30,13 +30,16 @@ bool MainScreen::UpdateScreen(sf::RenderWindow & window, float deltaTime)
 																		sf::Vector2f(speed, 90),
 																		sf::Vector2f((rand() % window.getSize().x), -100)));
 
-		m_spawnRate *= .95;
+		if (m_spawnRate < .05)
+		{
+			m_spawnRate *= .95;
+		}
 	}
 	else
 	{
 		m_spawnTime += deltaTime;
 	}
-	if (ObjectHandler::GetInstance()->GetPlayer()->GetLives() < 0)
+	if (ObjectHandler::GetInstance()->GetPlayer()->GetLives() <= 0)
 	{
 		return true;
 	}
