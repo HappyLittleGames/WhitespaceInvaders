@@ -49,8 +49,14 @@ void Commands::EnterCommand(sf::RenderWindow & window, const std::string& comman
 	}
 	else if (command == "newgame")
 	{
-		// do nothing :(
-		// run this shit in main k
+		for each (Invader* invader in ObjectHandler::GetInstance()->GetInvaders())
+		{
+			invader->SetExplodingState(true);
+		}
+		for each (Lazer* lazer in ObjectHandler::GetInstance()->GetLazers())
+		{
+			lazer->SetExplodingState(true);
+		}
 	}
 	else if ((command == "quit") || (command == "exit"))
 	{

@@ -37,6 +37,8 @@ Player* LineWriter::NewPlayer(const sf::RenderWindow& window, sf::Font& font, fl
 
 	playerCommand.setString("");
 
+	player->SetWindowPos(sf::Vector2f(window.getPosition().x, window.getPosition().y));
+	player->SetFollowState(true);
 	player->SetCommand(playerCommand);
 
 	return player;
@@ -79,6 +81,7 @@ Invader* LineWriter::NewInvader(const sf::RenderWindow& window, const sf::Text& 
 	invaderText->setFont(*copyText.getFont());
 	invaderText->setString(copyText.getString());
 
+	invader->SetWindowPos(sf::Vector2f(window.getPosition().x, window.getPosition().y));
 	invader->SetSpeed(speed);
 	invader->SetFollowState(true);
 	invader->SetTrailState(true);

@@ -9,6 +9,11 @@ Invader::Invader()
 
 Invader::~Invader()
 {
+	for each (Trail* trail in m_trails)
+	{
+		trail->~Trail();
+		trail = nullptr;
+	}
 }
 
 
@@ -60,7 +65,7 @@ void Invader::MakeTrail(sf::RenderWindow& window, float deltaTime)
 		if (m_trailing)
 		{
 			m_trails.push_back(new Trail(m_text));
-			// m_trails.back() = m_text; // gotta make a trails class from Line
+			m_trails.back()->SetWindowPos(sf::Vector2f(window.getPosition().x, window.getPosition().y));
 		}
 	}
 	else

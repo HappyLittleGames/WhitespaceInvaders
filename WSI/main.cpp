@@ -8,10 +8,6 @@
 
 int main()
 {
-#ifndef _DEBUG
-	FreeConsole();
-#endif
-
 	ObjectHandler* objectHandler = ObjectHandler::GetInstance();
 
 	sf::VideoMode windowMode = sf::VideoMode(310, 512);
@@ -19,6 +15,11 @@ int main()
 	sf::RenderWindow window(windowMode, "whitespace", sf::Style::None);
 	window.setVerticalSyncEnabled(true);
 	window.setFramerateLimit(60);
+
+#ifndef _DEBUG
+	window.setPosition(sf::Vector2i(0, 0));
+	FreeConsole();
+#endif
 
 	sf::Clock clock;
 	sf::Time time;

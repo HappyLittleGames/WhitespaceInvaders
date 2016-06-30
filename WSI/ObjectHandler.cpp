@@ -170,6 +170,7 @@ void ObjectHandler::ExplodeExploders(sf::RenderWindow& window)
 				m_splosions.back()->SetString(singleChar);
 			}
 			m_lazers[i]->~Lazer();
+			m_lazers[i] = nullptr;
 			m_lazers.erase(m_lazers.begin() + i);
 			delete exploder;
 		}
@@ -192,6 +193,7 @@ void ObjectHandler::ExplodeExploders(sf::RenderWindow& window)
 				m_splosions.back()->SetString(singleChar);
 			}
 			m_invaders[i]->~Invader();
+			m_invaders[i] = nullptr;
 			m_invaders.erase(m_invaders.begin() + i);
 			delete exploder;
 		}
@@ -200,6 +202,7 @@ void ObjectHandler::ExplodeExploders(sf::RenderWindow& window)
 			if (m_splosions[i]->GetText()->getPosition().y + window.getPosition().y > sf::VideoMode::getDesktopMode().height + 900)
 			{
 				m_splosions[i]->~Splosion();
+				m_splosions[i] = nullptr;
 				m_splosions.erase(m_splosions.begin() + i);
 
 			}
