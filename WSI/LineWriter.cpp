@@ -66,7 +66,7 @@ Lazer* LineWriter::NewLazer(const sf::RenderWindow& window, const sf::Text& copy
 	
 	return lazer;
 
-	lazer->~Lazer();
+	delete lazer;
 	delete lazerText;
 }
 
@@ -92,7 +92,7 @@ Invader* LineWriter::NewInvader(const sf::RenderWindow& window, const sf::Text& 
 	invader->SetText(invaderText);
 	return invader;
 
-	invader->~Invader();
+	delete invader;
 	delete invaderText;
 }
 
@@ -114,7 +114,7 @@ Splosion* LineWriter::NewSplosion(const sf::RenderWindow& window, const sf::Text
 	splosion->SetText(splosionText);
 	return splosion;
 
-	splosion->~Splosion();
+	delete splosion;
 	delete splosionText;
 }
 

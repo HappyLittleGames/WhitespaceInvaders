@@ -19,7 +19,7 @@ Splosion::~Splosion()
 	delete m_text;
 	for each (Trail* trail in m_trails)
 	{
-		trail->~Trail();
+		delete trail;
 	}
 	m_trails.clear();
 }

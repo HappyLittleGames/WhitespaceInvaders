@@ -32,7 +32,8 @@ bool GameOverScreen::UpdateScreen(sf::RenderWindow & window, float deltaTime)
 														ObjectHandler::GetInstance()->GetGameAngle(),
 														sf::Vector2f(0, -90),
 														sf::Vector2f(textAmount * i, window.getSize().y + 60)));
-			ObjectHandler::GetInstance()->GetInvaders().back()->SetFollowState(true);
+			ObjectHandler::GetInstance()->GetInvaders().back()->SetFollowState(false);
+			ObjectHandler::GetInstance()->GetInvaders().back()->SetTrailState(true);
 		}
 	}
 	else
@@ -45,7 +46,7 @@ bool GameOverScreen::UpdateScreen(sf::RenderWindow & window, float deltaTime)
 		{
 			if (ObjectHandler::GetInstance()->GetInvaders()[i]->GetText()->getPosition().y < 0 - window.getPosition().y)
 			{
-				std::cout << "   -    " << ObjectHandler::GetInstance()->GetInvaders()[i]->GetText()->getPosition().y << std::endl;
+				// std::cout << "   -    " << ObjectHandler::GetInstance()->GetInvaders()[i]->GetText()->getPosition().y << std::endl;
 				ObjectHandler::GetInstance()->GetInvaders()[i]->SetExplodingState(true);
 				
 				//ObjectHandler::GetInstance()->GetInvaders()[i]->~Invader();

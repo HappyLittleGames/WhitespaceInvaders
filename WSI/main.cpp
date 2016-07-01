@@ -24,7 +24,6 @@ int main()
 #ifdef _DEBUG
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 #endif
-
 	ObjectHandler* objectHandler = ObjectHandler::GetInstance();
 
 	sf::VideoMode windowMode = sf::VideoMode(310, 512);
@@ -145,6 +144,10 @@ int main()
 				}
 			}
 		}
+
+
+		// update and draw
+
 
 		window.clear();
 

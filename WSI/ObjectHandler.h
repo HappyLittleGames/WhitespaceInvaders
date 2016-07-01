@@ -3,6 +3,7 @@
 #include "Header.h"
 #include "AssetLoader.h"
 #include <stdio.h>
+#include <sstream>
 
 class ObjectHandler
 {

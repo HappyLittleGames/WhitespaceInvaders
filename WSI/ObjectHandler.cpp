@@ -86,13 +86,15 @@ void ObjectHandler::UpdateEverything(sf::RenderWindow& window, float deltaTime)
 			if ((m_invaders[i]->GetText()->getPosition().y + window.getPosition().y) > sf::VideoMode::getDesktopMode().height + 90)
 			{
 				m_invaders[i]->~Invader();
+				// delete m_invaders[i];
 				m_invaders.erase(m_invaders.begin() + i);
 
 				m_player->SetLives(m_player->GetLives() - 1);
-				std::string titleString = "Lives: ";
-				titleString.push_back((char)m_player->GetLives());
-				std::cout << titleString << std::endl;
-				m_header->SetTitle(titleString);
+
+				std::ostringstream lives;
+				lives << "Lives: " << m_player->GetLives();
+				std::cout << lives.str() << std::endl;
+				m_header->SetTitle(lives.str());
 				std::cout << "InvaderExploded!" << std::endl;
 
 				for each (Line* lazer in m_lazers)
@@ -170,7 +172,6 @@ void ObjectHandler::ExplodeExploders(sf::RenderWindow& window)
 	{
 		if (m_lazers[i]->IsExploding())
 		{
-			//Line* exploder = m_lazers[i];
 			std::cout << "Making splosion with string of " << m_lazers[i]->GetText()->getString().getSize() << "." << std::endl;
 			for (int j = 0; j < m_lazers[i]->GetText()->getString().getSize(); j++)
 			{
@@ -183,17 +184,15 @@ void ObjectHandler::ExplodeExploders(sf::RenderWindow& window)
 				AddSplosion(LineWriter::NewSplosion(window, *m_lazers[i]->GetText(), - m_gameAngle));
 				m_splosions.back()->SetString(singleChar);
 			}
-			m_lazers[i]->~Lazer();
+			delete m_lazers[i];
 			m_lazers.erase(m_lazers.begin() + i);
-			//delete exploder;
 		}
 	}
 	for (int i = m_invaders.size() - 1; i >= 0; i--)
 	{
 		if (m_invaders[i]->IsExploding())
 		{
-			//Line* exploder = m_invaders[i];
-			std::cout << "Making splosion with string of " << m_invaders[i]->GetText()->getString().getSize() << "." << std::endl;
+			std::cout << "Making splosion with string of " << m_invaders[i]->GetText()->getString().getSize() << "."  << " m_splosions contains " << m_splosions.size() << " entities." << std::endl;
 			for (int j = 0; j < m_invaders[i]->GetText()->getString().getSize(); j++)
 			{
 				sf::String singleChar = "";
@@ -207,7 +206,6 @@ void ObjectHandler::ExplodeExploders(sf::RenderWindow& window)
 			}
 			delete m_invaders[i];
 			m_invaders.erase(m_invaders.begin() + i);
-			//delete exploder;
 		}
 		for (int i = m_splosions.size() - 1; i >= 0; i--)
 		{

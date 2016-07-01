@@ -8,6 +8,7 @@ MainScreen::MainScreen()
 	m_spawnTime = 0;
 
 	m_textTemplate->setColor(sf::Color(255, 255, 255, 255));
+	m_textTemplate->setString("invade();");
 }
 
 
