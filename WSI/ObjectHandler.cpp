@@ -117,7 +117,6 @@ void ObjectHandler::UpdateEverything(sf::RenderWindow& window, float deltaTime)
 
 void ObjectHandler::DrawEverything(sf::RenderWindow& window)
 {
-	m_player->Draw(window);
 
 	for (int i = 0; i < m_lazers.size(); i++)
 	{
@@ -132,6 +131,7 @@ void ObjectHandler::DrawEverything(sf::RenderWindow& window)
 		m_splosions[i]->Draw(window);
 	}
 
+	m_player->Draw(window);
 	m_header->Draw(window);
 }
 

@@ -63,7 +63,11 @@ Lazer* LineWriter::NewLazer(const sf::RenderWindow& window, const sf::Text& copy
 	lazer->SetSpeed(speed);
 	lazer->SetFollowState(true);
 	lazer->SetText(lazerText);
+	
 	return lazer;
+
+	lazer->~Lazer();
+	delete lazerText;
 }
 
 
@@ -87,6 +91,9 @@ Invader* LineWriter::NewInvader(const sf::RenderWindow& window, const sf::Text& 
 	invader->SetTrailState(true);
 	invader->SetText(invaderText);
 	return invader;
+
+	invader->~Invader();
+	delete invaderText;
 }
 
 
@@ -106,5 +113,8 @@ Splosion* LineWriter::NewSplosion(const sf::RenderWindow& window, const sf::Text
 	splosion->SetFollowState(true);
 	splosion->SetText(splosionText);
 	return splosion;
+
+	splosion->~Splosion();
+	delete splosionText;
 }
 

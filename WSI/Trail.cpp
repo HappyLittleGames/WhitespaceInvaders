@@ -16,7 +16,7 @@ Trail::Trail(const sf::Text* text)
 
 Trail::~Trail()
 {
-	m_text->~Text();
+	delete m_text;
 }
 
 void Trail::Draw(sf::RenderWindow& window)

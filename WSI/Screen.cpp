@@ -21,6 +21,7 @@ Screen::Screen()
 
 Screen::~Screen()
 {
+	delete m_textTemplate;
 }
 
 bool Screen::UpdateScreen(sf::RenderWindow & window, float deltaTime)

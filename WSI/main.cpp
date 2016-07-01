@@ -1,3 +1,5 @@
+#define CRTDBG_MAP_ALLOC
+
 #include <SFML/Graphics.hpp>
 #include "ObjectHandler.h"
 #include "Commands.h"
@@ -5,9 +7,24 @@
 #include "GameOverScreen.h"
 #include "MainScreen.h"
 #include "ScreenHandler.h"
+#include <stdlib.h>
+#include <crtdbg.h>
+
+#ifdef _DEBUG
+#define DEBUG_NEW new(_NORMAL_BLOCK, __FILE__, __LINE__)
+#define new DEBUG_NEW
+#endif 
 
 int main()
 {
+	char *a = new char[10];
+	char *b = (char*)malloc(20);
+	_CrtDumpMemoryLeaks();
+
+#ifdef _DEBUG
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+#endif
+
 	ObjectHandler* objectHandler = ObjectHandler::GetInstance();
 
 	sf::VideoMode windowMode = sf::VideoMode(310, 512);
@@ -144,6 +161,5 @@ int main()
 
 		window.display();
 	}
-
 	return 0;
 }

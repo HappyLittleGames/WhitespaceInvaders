@@ -8,7 +8,7 @@ Lazer::Lazer()
 
 Lazer::~Lazer()
 {
-	m_text->~Text();
+	delete m_text;
 }
 
 

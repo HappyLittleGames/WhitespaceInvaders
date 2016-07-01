@@ -12,6 +12,7 @@ GameOverScreen::GameOverScreen()
 
 GameOverScreen::~GameOverScreen()
 {
+	delete m_textTemplate;
 }
 
 bool GameOverScreen::UpdateScreen(sf::RenderWindow & window, float deltaTime)
@@ -31,11 +32,26 @@ bool GameOverScreen::UpdateScreen(sf::RenderWindow & window, float deltaTime)
 														ObjectHandler::GetInstance()->GetGameAngle(),
 														sf::Vector2f(0, -90),
 														sf::Vector2f(textAmount * i, window.getSize().y + 60)));
+			ObjectHandler::GetInstance()->GetInvaders().back()->SetFollowState(true);
 		}
 	}
 	else
 	{
 		m_spawnTime += deltaTime;
+	}
+	if (ObjectHandler::GetInstance()->GetInvaders().size() > 0)
+	{
+		for (int i = ObjectHandler::GetInstance()->GetInvaders().size() - 1; i >= 0; i--)
+		{
+			if (ObjectHandler::GetInstance()->GetInvaders()[i]->GetText()->getPosition().y < 0 - window.getPosition().y)
+			{
+				std::cout << "   -    " << ObjectHandler::GetInstance()->GetInvaders()[i]->GetText()->getPosition().y << std::endl;
+				ObjectHandler::GetInstance()->GetInvaders()[i]->SetExplodingState(true);
+				
+				//ObjectHandler::GetInstance()->GetInvaders()[i]->~Invader();
+				//ObjectHandler::GetInstance()->GetInvaders().erase(ObjectHandler::GetInstance()->GetInvaders().begin() + i);
+			}
+		}
 	}
 	return false;
 }

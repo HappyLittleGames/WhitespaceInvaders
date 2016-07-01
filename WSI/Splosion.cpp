@@ -15,11 +15,13 @@ Splosion::Splosion()
 
 Splosion::~Splosion()
 {
-	m_text->~Text();
+
+	delete m_text;
 	for each (Trail* trail in m_trails)
 	{
 		trail->~Trail();
 	}
+	m_trails.clear();
 }
 
 
@@ -64,5 +66,14 @@ void Splosion::MakeTrail(sf::RenderWindow& window, float deltaTime)
 	else
 	{
 		m_intervalTime += deltaTime;
+	}
+
+	if (m_trails.size() > 0)
+	{
+		if (m_trails[0]->GetText()->getColor().a < 10)
+		{
+			m_trails[0]->~Trail();
+			m_trails.erase(m_trails.begin());
+		}
 	}
 }

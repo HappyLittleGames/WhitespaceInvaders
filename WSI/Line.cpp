@@ -9,7 +9,7 @@ Line::Line()
 
 Line::~Line()
 {
-	//m_text->~Text();
+	//delete m_text;
 }
 
 

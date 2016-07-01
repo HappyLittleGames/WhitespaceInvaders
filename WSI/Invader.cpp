@@ -9,11 +9,12 @@ Invader::Invader()
 
 Invader::~Invader()
 {
-	m_text->~Text();
+	delete m_text;
 	for each (Trail* trail in m_trails)
 	{
 		trail->~Trail();
 	}
+	m_trails.clear();
 }
 
 
@@ -48,7 +49,6 @@ void Invader::Draw(sf::RenderWindow & window)
 	{
 		window.draw(*text->GetText());
 	}
-
 }
 
 void Invader::SetTrailState(bool state)
