@@ -205,7 +205,7 @@ void ObjectHandler::ExplodeExploders(sf::RenderWindow& window)
 				AddSplosion(LineWriter::NewSplosion(window, *m_invaders[i]->GetText(), - m_gameAngle));
 				m_splosions.back()->SetString(singleChar);
 			}
-			m_invaders[i]->~Invader();
+			delete m_invaders[i];
 			m_invaders.erase(m_invaders.begin() + i);
 			//delete exploder;
 		}
@@ -213,7 +213,7 @@ void ObjectHandler::ExplodeExploders(sf::RenderWindow& window)
 		{
 			if (m_splosions[i]->GetText()->getPosition().y + window.getPosition().y > sf::VideoMode::getDesktopMode().height + 900)
 			{
-				m_splosions[i]->~Splosion();
+				delete m_splosions[i];
 				m_splosions.erase(m_splosions.begin() + i);
 
 			}
