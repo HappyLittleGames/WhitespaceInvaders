@@ -140,9 +140,23 @@ void ObjectHandler::NewGame(sf::RenderWindow& window)
 {
 	// delete them pointers too
 	m_player = LineWriter::NewPlayer(window, m_loader->GetFont(), -m_gameAngle);
-	m_lazers = std::vector<Lazer*>{};
-	m_invaders = std::vector<Invader*>{};
-	m_splosions = std::vector<Splosion*>{};
+	
+	for each (Splosion* splosion in m_splosions)
+	{
+		delete splosion;
+	}
+	for each (Lazer* lazer in m_lazers)
+	{
+		lazer->SetExplodingState(true);
+	}
+	for each (Invader* invader in m_invaders)
+	{
+		invader->SetExplodingState(true);
+	}
+	
+	//m_lazers = std::vector<Lazer*>{};
+	//m_invaders = std::vector<Invader*>{};
+	//m_splosions = std::vector<Splosion*>{};
 }
 
 AssetLoader* ObjectHandler::GetLoader()
@@ -156,53 +170,50 @@ void ObjectHandler::ExplodeExploders(sf::RenderWindow& window)
 	{
 		if (m_lazers[i]->IsExploding())
 		{
-			Line* exploder = m_lazers[i];
-			std::cout << "Making splosion with string of " << exploder->GetText()->getString().getSize() << "." << std::endl;
-			for (int j = 0; j < exploder->GetText()->getString().getSize(); j++)
+			//Line* exploder = m_lazers[i];
+			std::cout << "Making splosion with string of " << m_lazers[i]->GetText()->getString().getSize() << "." << std::endl;
+			for (int j = 0; j < m_lazers[i]->GetText()->getString().getSize(); j++)
 			{
 				sf::String singleChar = "";
 				for (int k = 0; k < j; k++)
 				{
 					singleChar += " ";
 				}
-				singleChar += exploder->GetText()->getString()[j];
+				singleChar += m_lazers[i]->GetText()->getString()[j];
 				AddSplosion(LineWriter::NewSplosion(window, *m_lazers[i]->GetText(), - m_gameAngle));
 				m_splosions.back()->SetString(singleChar);
 			}
 			m_lazers[i]->~Lazer();
-			m_lazers[i] = nullptr;
 			m_lazers.erase(m_lazers.begin() + i);
-			delete exploder;
+			//delete exploder;
 		}
 	}
 	for (int i = m_invaders.size() - 1; i >= 0; i--)
 	{
 		if (m_invaders[i]->IsExploding())
 		{
-			Line* exploder = m_invaders[i];
-			std::cout << "Making splosion with string of " << exploder->GetText()->getString().getSize() << "." << std::endl;
-			for (int j = 0; j < exploder->GetText()->getString().getSize(); j++)
+			//Line* exploder = m_invaders[i];
+			std::cout << "Making splosion with string of " << m_invaders[i]->GetText()->getString().getSize() << "." << std::endl;
+			for (int j = 0; j < m_invaders[i]->GetText()->getString().getSize(); j++)
 			{
 				sf::String singleChar = "";
 				for (int k = 0; k < j; k++)
 				{
 					singleChar += " ";
 				}
-				singleChar += exploder->GetText()->getString()[j];
+				singleChar += m_invaders[i]->GetText()->getString()[j];
 				AddSplosion(LineWriter::NewSplosion(window, *m_invaders[i]->GetText(), - m_gameAngle));
 				m_splosions.back()->SetString(singleChar);
 			}
 			m_invaders[i]->~Invader();
-			m_invaders[i] = nullptr;
 			m_invaders.erase(m_invaders.begin() + i);
-			delete exploder;
+			//delete exploder;
 		}
 		for (int i = m_splosions.size() - 1; i >= 0; i--)
 		{
 			if (m_splosions[i]->GetText()->getPosition().y + window.getPosition().y > sf::VideoMode::getDesktopMode().height + 900)
 			{
 				m_splosions[i]->~Splosion();
-				m_splosions[i] = nullptr;
 				m_splosions.erase(m_splosions.begin() + i);
 
 			}

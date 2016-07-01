@@ -9,6 +9,7 @@ Line::Line()
 
 Line::~Line()
 {
+	//m_text->~Text();
 }
 
 

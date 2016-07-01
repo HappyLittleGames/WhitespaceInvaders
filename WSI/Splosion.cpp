@@ -15,6 +15,11 @@ Splosion::Splosion()
 
 Splosion::~Splosion()
 {
+	m_text->~Text();
+	for each (Trail* trail in m_trails)
+	{
+		trail->~Trail();
+	}
 }
 
 

@@ -5,7 +5,7 @@ class Line : public DrawableObject
 {
 public:
 	Line();
-	~Line();
+	virtual ~Line();
 
 	sf::Text* GetText() const;
 	void SetText(sf::Text* text);

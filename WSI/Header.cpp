@@ -34,6 +34,8 @@ void Header::SetTitle(std::string string)
 
 Header::~Header()
 {
+	delete m_title;
+	delete m_buttons;
 }
 
 

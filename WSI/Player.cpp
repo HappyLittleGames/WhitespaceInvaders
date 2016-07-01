@@ -9,6 +9,7 @@ Player::Player()
 
 Player::~Player()
 {
+	m_text->~Text();
 }
 
 

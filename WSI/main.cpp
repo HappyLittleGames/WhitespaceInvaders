@@ -78,10 +78,7 @@ int main()
 
 					else if (event.key.code == sf::Keyboard::F1)
 					{
-						// Man you gotta make a commands class
-						// objectHandler->AddInvader(LineWriter::NewInvader(window, objectHandler->GetLoader()->GetFont(), sf::Vector2f(window.getSize().x / 2, 40)));
-						objectHandler->AddInvader(LineWriter::NewInvader(window, objectHandler->GetPlayer()->GetCommand(), objectHandler->GetGameAngle(), sf::Vector2f((rand() % 30) - 10, 50), sf::Vector2f(window.getSize().x/2, 60)));
-						std::cout << "amount of invaders: " << objectHandler->GetInvaders().size() << "." << std::endl;
+						objectHandler->NewGame(window);
 					}
 
 					else if (event.key.code == sf::Keyboard::F2)

@@ -6,7 +6,7 @@ class Invader : public Line
 {
 public:
 	Invader();
-	~Invader();
+	~Invader() override;
 
 	void Update(sf::RenderWindow& window, float deltaTime) override;
 	void Draw(sf::RenderWindow& window) override;

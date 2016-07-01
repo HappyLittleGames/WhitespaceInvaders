@@ -9,10 +9,10 @@ Invader::Invader()
 
 Invader::~Invader()
 {
+	m_text->~Text();
 	for each (Trail* trail in m_trails)
 	{
 		trail->~Trail();
-		trail = nullptr;
 	}
 }
 
