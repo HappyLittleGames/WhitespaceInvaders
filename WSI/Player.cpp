@@ -10,6 +10,7 @@ Player::Player()
 Player::~Player()
 {
 	m_text->~Text();
+	m_lives = 0;
 }
 
 
@@ -35,6 +36,7 @@ void Player::FollowWindow(sf::RenderWindow & window)
 void Player::Update(sf::RenderWindow& window, float deltaTime)
 {
 	FollowWindow(window);
+	m_command.setPosition(m_text->getPosition().x, m_command.getPosition().y);
 }
 
 

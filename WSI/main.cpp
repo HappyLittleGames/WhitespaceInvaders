@@ -117,12 +117,12 @@ int main()
 						std::cout << "making lazers splode " << std::endl;
 						for each (Lazer* lazer in objectHandler->GetLazers())
 						{
-							//objectHandler->AddSplosion(LineWriter::NewSplosion(window, *lazer->GetText()));
+							
 							lazer->SetExplodingState(true);
 						}	
 						for each (Invader* invader in objectHandler->GetInvaders())
 						{
-							//objectHandler->AddSplosion(LineWriter::NewSplosion(window, *lazer->GetText()));
+							
 							invader->SetExplodingState(true);
 						}
 					}
@@ -152,7 +152,6 @@ int main()
 		window.clear();
 
 		time = clock.getElapsedTime();
-		// std::cout << "Delta Time: " << time.asSeconds() << "." << std::endl;
 		deltaTime = time.asSeconds();
 		clock.restart();
 

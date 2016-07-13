@@ -24,5 +24,6 @@ protected:
 	sf::Vector2f m_oldWindowPos;
 
 	bool m_exploding;
+	bool m_boringMode
 };
 

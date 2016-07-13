@@ -2,11 +2,11 @@
 
 GameOverScreen::GameOverScreen()
 {
-	m_spawnRate = 1.4;
+	m_spawnRate = 3.2;
 	m_spawnTime = m_spawnRate - 0.1;
 
 	m_textTemplate->setColor(sf::Color(255, 0, 0, 255));
-	m_textTemplate->setString("Game Over");
+	m_textTemplate->setString("Game Over // Your Score Was " + ObjectHandler::GetInstance()->GetScore());
 }
 
 

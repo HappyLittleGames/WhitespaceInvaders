@@ -62,6 +62,8 @@ ObjectHandler::ObjectHandler()
 	m_loader = new AssetLoader();
 	m_header = new Header(m_loader->GetFont());
 	m_gameAngle = 90;
+	m_score = 0;
+	m_time = m_score;
 }
 
 
@@ -83,19 +85,13 @@ void ObjectHandler::UpdateEverything(sf::RenderWindow& window, float deltaTime)
 
 		if (m_player->GetLives() > 0)
 		{
-			if ((m_invaders[i]->GetText()->getPosition().y + window.getPosition().y) > sf::VideoMode::getDesktopMode().height + 90)
+
+			if (m_invaders[i]->GetText()->getPosition().y + window.getPosition().y > sf::VideoMode::getDesktopMode().height + 90)
 			{
 				m_invaders[i]->~Invader();
-				// delete m_invaders[i];
 				m_invaders.erase(m_invaders.begin() + i);
 
 				m_player->SetLives(m_player->GetLives() - 1);
-
-				std::ostringstream lives;
-				lives << "Lives: " << m_player->GetLives();
-				std::cout << lives.str() << std::endl;
-				m_header->SetTitle(lives.str());
-				std::cout << "InvaderExploded!" << std::endl;
 
 				for each (Line* lazer in m_lazers)
 				{
@@ -110,6 +106,16 @@ void ObjectHandler::UpdateEverything(sf::RenderWindow& window, float deltaTime)
 			}
 		}
 	}
+
+	if (m_player->GetLives() >= 0)
+	{
+		m_time += deltaTime;
+		m_score = m_time;
+		std::ostringstream stats;
+		stats << "Lives: " << m_player->GetLives() << " - Score: " << m_score;
+		m_header->SetTitle(stats.str());
+	}
+
 	for (int i = 0; i < m_splosions.size(); i++)
 	{
 		m_splosions[i]->Update(window, deltaTime);
@@ -140,7 +146,6 @@ void ObjectHandler::DrawEverything(sf::RenderWindow& window)
 
 void ObjectHandler::NewGame(sf::RenderWindow& window)
 {
-	// delete them pointers too
 	m_player = LineWriter::NewPlayer(window, m_loader->GetFont(), -m_gameAngle);
 	
 	for each (Splosion* splosion in m_splosions)
@@ -155,10 +160,8 @@ void ObjectHandler::NewGame(sf::RenderWindow& window)
 	{
 		invader->SetExplodingState(true);
 	}
-	
-	//m_lazers = std::vector<Lazer*>{};
-	//m_invaders = std::vector<Invader*>{};
-	//m_splosions = std::vector<Splosion*>{};
+
+	// m_time = 0;
 }
 
 AssetLoader* ObjectHandler::GetLoader()
@@ -232,7 +235,6 @@ void ObjectHandler::SetGameAngle(float angle)
 
 bool ObjectHandler::CheckCollision(Line*& target, Line*& munition)
 {
-	//std::cout << "Looking For Collision" << std::endl;
 	if ((target->GetText()->getGlobalBounds().left > munition->GetText()->getGlobalBounds().left + munition->GetText()->getGlobalBounds().width) || (munition->GetText()->getGlobalBounds().left > target->GetText()->getGlobalBounds().left + target->GetText()->getGlobalBounds().width))
 	{
 		//std::cout << "no horizontal collision";
@@ -253,7 +255,6 @@ void ObjectHandler::RunCollisions(std::vector<Invader*>& targets, std::vector<La
 {
 	for each (Line* target in targets)
 	{
-		//std::cout << "target found, searching for hits"  << std::endl;
 		bool collision = false;
 
 		for each (Line* munition in munitions)
@@ -262,35 +263,32 @@ void ObjectHandler::RunCollisions(std::vector<Invader*>& targets, std::vector<La
 			{
 				// std::cout << "Collision Detected" << std::endl;
 				collision = true;
-				/*m_explosions.push_back(entityMaker.MakeEntity("Explosion"));
-				m_explosions.back()->GetText()->setPosition(target->GetText()->getPosition());
-				m_explosions.back()->GetText()->setFont(*target->GetText()->getFont());*/
-
 				munition->SetExplodingState(true);
 			}
 		}
 
 		if (collision)
 		{
-			//target->GetText()->setString("kabooom();");
 			target->SetExplodingState(true);
 		}
-		//else
-		//{
-		//	target->SetExplodingState(false);
-		//}
 	}
+}
 
-	/*if (targets.size() > 0)
-	{
-		for (int i = targets.size() - 1; i >= 0; i--)
-		{
-			if (targets[i]->IsExploding())
-			{
-				targets.erase(targets.begin() + i);
-				std::cout << "-----" << targets.size() << std::endl;
-			}
-		}
-	}*/
+std::string ObjectHandler::GetScore()
+{
+	std::ostringstream score;
+	score << m_score;
+
+	return score.str();
+}
+
+void ObjectHandler::ToggleBoringState()
+{
+	m_boringMode = !m_boringMode;
+}
+
+bool ObjectHandler::GetBoringState()
+{
+	return m_boringMode;
 }
 

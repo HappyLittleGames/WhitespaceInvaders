@@ -38,6 +38,11 @@ public:
 	bool CheckCollision(Line*& target, Line*& munition);
 	void RunCollisions(std::vector<Invader*>& targets, std::vector<Lazer*>& munitions);
 
+	std::string GetScore();
+
+	void ToggleBoringState();
+	bool GetBoringState();
+
 private:
 	ObjectHandler();
 	static ObjectHandler* m_instance;
@@ -51,5 +56,9 @@ private:
 	std::vector<Invader*> m_invaders;
 	std::vector<Lazer*> m_lazers;
 	std::vector<Splosion*> m_splosions;
+
+	int m_score;
+	float m_time;
+	bool m_boringMode;
 };
 

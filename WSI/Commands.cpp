@@ -60,13 +60,19 @@ void Commands::EnterCommand(sf::RenderWindow & window, const std::string& comman
 	}
 	else if (command == "left")
 	{
-		ObjectHandler::GetInstance()->GetPlayer()->GetText()->setPosition(ObjectHandler::GetInstance()->GetPlayer()->GetText()->getPosition() + sf::Vector2f(-45, 0));
-		ObjectHandler::GetInstance()->GetPlayer()->GetCommand().setPosition(ObjectHandler::GetInstance()->GetPlayer()->GetCommand().getPosition() + sf::Vector2f(-45, 0));
+		float xPos = (ObjectHandler::GetInstance()->GetPlayer()->GetText()->getPosition().x > 45) ? 45 : ObjectHandler::GetInstance()->GetPlayer()->GetText()->getPosition().x;
+		sf::Vector2f moveAmount( -xPos, 0 );
+
+		ObjectHandler::GetInstance()->GetPlayer()->GetText()->setPosition(ObjectHandler::GetInstance()->GetPlayer()->GetText()->getPosition() + moveAmount);
+		
 	}
 	else if (command == "right")
 	{
-		ObjectHandler::GetInstance()->GetPlayer()->GetText()->setPosition(ObjectHandler::GetInstance()->GetPlayer()->GetText()->getPosition() + sf::Vector2f(45, 0));
-		ObjectHandler::GetInstance()->GetPlayer()->GetCommand().setPosition(ObjectHandler::GetInstance()->GetPlayer()->GetCommand().getPosition() + sf::Vector2f(45, 0));
+		float xPos = (ObjectHandler::GetInstance()->GetPlayer()->GetText()->getPosition().x < window .getSize().x - 45) ? 45 : window.getSize().x - ObjectHandler::GetInstance()->GetPlayer()->GetText()->getPosition().x - ObjectHandler::GetInstance()->GetPlayer()->GetText()->getCharacterSize();
+		sf::Vector2f moveAmount( xPos, 0 );
+
+		ObjectHandler::GetInstance()->GetPlayer()->GetText()->setPosition(ObjectHandler::GetInstance()->GetPlayer()->GetText()->getPosition() + moveAmount);
+		
 	}
 	else if ((command == "quit") || (command == "exit"))
 	{
