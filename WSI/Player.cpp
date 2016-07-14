@@ -4,13 +4,13 @@
 
 Player::Player()
 {
+	m_lives = 4;
 }
 
 
 Player::~Player()
 {
 	m_text->~Text();
-	m_lives = 0;
 }
 
 

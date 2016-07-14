@@ -104,10 +104,10 @@ std::vector<std::string> Commands::GetCommands()
 	//commands.push_back("COMMAND			description");
 	commands.push_back("newgame             start a new game");
 	commands.push_back("lazer               pew pew pew pew");
-	commands.push_back("reset               resets position, might be helpful");
 	commands.push_back("options             there are no options");
 	commands.push_back("credits             as if");
-	commands.push_back("quit                give up and quit");
+	commands.push_back("exit                give up and quit");
+	commands.push_back("left, right         go places");
 
 	return commands;
 }

@@ -107,10 +107,13 @@ void ObjectHandler::UpdateEverything(sf::RenderWindow& window, float deltaTime)
 		}
 	}
 
-	if (m_player->GetLives() >= 0)
+	if (m_player->GetLives() > 0)
 	{
 		m_time += deltaTime;
 		m_score = m_time;
+	}
+	if ((m_player->GetLives() >= 0) && (m_player->GetLives() < 4))
+	{
 		std::ostringstream stats;
 		stats << "Lives: " << m_player->GetLives() << " - Score: " << m_score;
 		m_header->SetTitle(stats.str());

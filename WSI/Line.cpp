@@ -75,19 +75,23 @@ void Line::Bounce(sf::RenderWindow& window)
 		float absX = fabs(m_speed.x);
 		m_speed = sf::Vector2f(absX, m_speed.y);
 
+		/*	BoringBounce
 		if (m_text->getPosition().x < 0)
 		{
 			m_text->setPosition(m_text->getCharacterSize(), m_text->getPosition().y);
 		}
+		*/
 	}
 	else if (m_text->getPosition().x > window.getSize().x - m_text->getCharacterSize())
 	{
 		float absX = fabs(m_speed.x);
 		m_speed = sf::Vector2f(-absX, m_speed.y);
 
+		/*
 		if (m_text->getPosition().x > window.getSize().x + m_text->getCharacterSize())
 		{
 			m_text->setPosition(window.getSize().x + m_text->getCharacterSize(), m_text->getPosition().y);
 		}
+		*/
 	}
 }
