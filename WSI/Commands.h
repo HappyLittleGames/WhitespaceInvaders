@@ -2,6 +2,7 @@
 #include "ObjectHandler.h"
 #include "LineWriter.h"
 #include "ScreenHandler.h"
+#include "CommandLog.h"
 
 static class Commands
 {

@@ -58,6 +58,11 @@ sf::Text Player::GetCommand() const
 	return m_command;
 }
 
+void Player::SetCommandString(std::string string)
+{
+	m_command.setString(string);
+}
+
 void Player::EnterText(sf::Event& event)
 {
 	if (event.key.code == sf::Keyboard::Return)
@@ -82,7 +87,8 @@ void Player::EnterText(sf::Event& event)
 	}
 	else if ((event.key.code == sf::Keyboard::Up) || (event.key.code == sf::Keyboard::Down))
 	{
-		// memento
+		/*std::cout << "playter detected Up or Down" << std::endl;
+		m_command.setString(CommandLog::GetInstance()->CycleUp());*/
 	}
 	else if (((event.text.unicode >= 65) && (event.text.unicode <= 240)) || event.text.unicode == 59 || event.text.unicode == 40 || event.text.unicode == 41)
 	{

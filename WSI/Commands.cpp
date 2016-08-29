@@ -5,6 +5,10 @@ void Commands::EnterCommand(sf::RenderWindow & window, const std::string& comman
 {
 	std::cout << "attempting to run commmand '" << command << "' for no reason" << std::endl;
 
+	// Memento Handling
+	CommandLog::GetInstance()->InputString(command);
+
+
 	if ((command == "pew") ||(command == "lazer"))
 	{
 		if (ObjectHandler::GetInstance()->GetPlayer()->GetCommand().getString().getSize() > 0)

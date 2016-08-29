@@ -80,6 +80,19 @@ int main()
 				}
 				case (sf::Event::KeyPressed) :
 				{
+					
+					// Memento cycling
+					if (event.key.code == sf::Keyboard::Up)
+					{
+						//std::cout << CommandLog::GetInstance()->CycleUp() << std::endl;
+						objectHandler->GetPlayer()->SetCommandString(CommandLog::GetInstance()->CycleUp());
+					}
+					if (event.key.code == sf::Keyboard::Down)
+					{
+						//std::cout << CommandLog::GetInstance()->CycleDown() << std::endl;
+						objectHandler->GetPlayer()->SetCommandString(CommandLog::GetInstance()->CycleDown());
+					}
+					
 					if (event.key.code == sf::Keyboard::Return)
 					{
 						if (objectHandler->GetPlayer()->GetCommand().getString() == "newgame")
